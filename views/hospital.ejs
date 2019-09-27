@@ -97,10 +97,78 @@
                 <h3 class="heading"><%= hospital.address %></h3><p></p>
                 <h3 class="heading"><%= hospital.state %></h3><p></p>
               </div>
+              
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Details</button>
             </div>
           </div>
           <% }) %>
           
+        </div>
+      </div>
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+                  <div class="container">
+                  <div class="row d-flex align-items-stretch no-gutters">
+                    <div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
+                    <h6 class="text-primary">G B Pant Hospital, Port Blair</h6>
+                    <p>Hospital_category:<span class="text-primary"> Public</span></p>
+                    <p >Hospital_caretype:<span class="text-primary"> Hospital</span></p>
+                    <p>Pincode<span class="text-primary">744103</span></p>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-stretch">
+                    <div id="map"></div>
+                    </div>
+                  </div>
+      
+                  <div class="row mt-5 pt-2">
+                    <div class="col-lg-6">
+                      <div class="services-2 d-flex">
+                      <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-first-aid-kit"></span></div>
+                      <div class="text">
+                        <p>Address: <span class="text-primary">GB Pant Road,City Centre, Port Blair</span></p>
+                        <p>State: <span class="text-primary">Andaman and Nicobar Islands</span></p>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="services-2 d-flex">
+                      <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-dropper"></span></div>
+                      <div class="text">
+                  
+                        <p>specialties: <span class="text-primary">Surgery, Medicine, Gynaecology, Pediatrics, ENT, Pathology and Ophthalmology</span></p>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="services-2 d-flex">
+                      <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-experiment-results"></span></div>
+                      <div class="text">
+                        <p>Phone: <span class="text-primary">03192 233665, 03192 246058, 03192 233455,03192 230858</span></p>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="services-2 d-flex">
+                      <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-heart-rate"></span></div>
+                      <div class="text">
+                        <p>Website:<a style="width:50px;"                           
+                        href="http://www.and.nic.in/C_charter/health/dhs/index.html#gph">
+                        <pre>http://www.and.nic.in/C_charter/health/dhs/index.html#gph</pre></a></p>
+                      </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </section>
+      
+               </div>
+          </div>
         </div>
       </div>
     </section>
