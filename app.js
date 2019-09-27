@@ -20,8 +20,28 @@ mongoose
   // }
   // });
   console.log(data)
-  // data.forEach(function(d){
-  //   Hospital.create()
+  // data.records.forEach(function(d){
+  //   Hospital.insertMany([
+  //    {
+  //      _id: d._sr_no_,
+  //      name: d.hospitalname,
+  //      category: d.hospital_category,
+  //      address: d.hostipalcaretype,
+  //      state: d.state,
+  //      district: d.district,
+  //      pincode: d. _pincode,
+  //      telephone: d.telephone,
+  //      emergency: d.emergencynum,
+  //      email: d.hospitalprimaryemailid,
+  //      website: d.website,
+  //      latitude: d._googlemapcorridinate_lati,
+  //      longitude: d._googlemapcorridinate_longi,
+  //      facilities: d.facilities
+  //    }
+  //   ])
+  //   .catch(err => {
+  //     console.log(err);
+  //   })
   // });
   app.listen(3000,function(){
     console.log(" Server has started");
@@ -29,7 +49,7 @@ mongoose
 })
 
 var request = require('request');
-request('https://api.data.gov.in/resource/7d208ae4-5d65-47ec-8cb8-2a7a7ac89f8c?api-key=579b464db66ec23bdd000001f077a08693744af45571d594ff223f1d&format=json&offset=0&limit=100', function (error, response, body) {
+request('https://api.data.gov.in/resource/7d208ae4-5d65-47ec-8cb8-2a7a7ac89f8c?api-key=579b464db66ec23bdd000001f077a08693744af45571d594ff223f1d&format=json&offset=0&limit=3', function (error, response, body) {
   console.error('error:', error); // Print the error if one occurred
   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
   data = JSON.parse(body)
