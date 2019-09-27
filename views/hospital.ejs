@@ -57,31 +57,65 @@
       </div>
     </nav>
 
-    <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url(images/bg_1.jpg);" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters align-items-center justify-content-start" data-scrollax-parent="true">
-          <div class="col-md-6 col-lg-6 text ftco-animate mt-5">
-            <h1 class="mb-4 text-primary display-4">Helping Your <span>Stay Happy One</span></h1>
-            <h3 class="subheading mb-4">Everyday We Bring Hope and Smile to the Patient We Serve</h3>
-            <a href="#"><button type="button" class="btn btn-lg btn-primary float-left mr-2">Hospitals near me!</button></a>
-
-            <div class="dropdown">
-              <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Advance Search
-              <span class="caret"></span></button>
-              <ul class="dropdown-menu" style="text-align:center;" >
-                <li><a href="#">PATHALOGY</a></li>
-                <li><a href="#">ORTHOPEDI</a></li>
-                <li><a href="#">PEDIATRICIAN</a></li>
-                <li><a href="#">PATHALOGY</a></li>
-                <li><a href="#">ORTHOPEDI</a></li>
-                <li><a href="#">PATHALOGY</a></li>
-                <li><a href="#">ORTHOPEDI</a></li>
-              </ul>
-            </div>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Helping your Stay Happy one</h1>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
+
+
+    <section >
+          <div class="overlay"></div>
+          <div class="container mb-5">
+          <div class="row d-flex align-items-stretch no-gutters" >
+            <div class="col-lg-4 p-4 p-md-5 order-md-last ">
+                    <button class="btn btn-block btn-secondary " onclick="getLocation()">Hospital Near me!</button>
+            </div>
+            <div class="col-lg-6 p-4 p-md-5 order-md-last " >
+
+              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Advance Search
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <label><input type="checkbox" value="football" name="specialist"> Football</label><br>
+            <label><input type="checkbox" value="baseball" name="specialist"> Baseball</label><br>
+            <label><input type="checkbox" value="cricket" name="specialist"> Cricket</label><br>
+            <label><input type="checkbox" value="boxing" name="specialist"> Boxing</label><br>
+            <label><input type="checkbox" value="racing" name="specialist"> Racing</label><br>
+            <label><input type="checkbox" value="swimming" name="specialist"> Swimming</label>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-secondary" id="advance">Get Values</button>
+
+        </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+        $("#advance").click(function(){
+          var favorite = [];
+          $.each($("input[name='specialist']:checked"), function(){
+              favorite.push($(this).val());
+          });
+          alert("My favourite sports are: " + favorite.join(", "));
+        });
+        });</script>
+    </div>
+      <div class="col-lg-2 p-4 p-md-5 order-md-last ">
+       <button class="btn btn-block btn-secondary" onclick="getLocation()">Map</button>
+   </div>
+  </div>
+  </div>
+  </section>
 
 
 
