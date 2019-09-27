@@ -27,4 +27,16 @@ router.get("/", function(req, res){
     })
 })
 
+
+router.get("/:id",function(req,res){
+    Hospital.findById(req.params.id).exec(function(err, foundHospital){
+        if(err){
+            console.log(err);
+        }else{
+            console.log(foundHospital);
+            res.render("oneHospital",{hospital: foundHospital});
+        }
+    });
+});
+
 module.exports = router;
