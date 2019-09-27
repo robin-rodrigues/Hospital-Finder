@@ -18,7 +18,7 @@ router.get("/", function(req, res){
             if((coordinates.latitude-Number(allHospitals[i].latitude)<1&&coordinates.longitude-Number(allHospitals[i].longitude)<1)
             &&(coordinates.latitude-Number(allHospitals[i].latitude)>-1&&coordinates.longitude-Number(allHospitals[i].longitude)>-1))
             {
-                console.log(allHospitals[i]);
+                // console.log(allHospitals[i]);
                 nearHospitals.push(allHospitals[i]);
             }
             }

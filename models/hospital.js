@@ -21,7 +21,7 @@ var hospitalSchema = new mongoose.Schema({
     },
     pincode:{
         required: true,
-        type:Number
+        type:String
     },
     telephone:{
         required: true,
