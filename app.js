@@ -3,16 +3,20 @@ var express     = require('express'),
     bodyParser  = require('body-parser'),
     mongoose    = require('mongoose')
 let Hospital = require('./models/hospital');
+var HospitalRoutes      = require("./routes/hospital");    
 
 
-// var request = require('request');
-// request('https://api.data.gov.in/resource/7d208ae4-5d65-47ec-8cb8-2a7a7ac89f8c?api-key=579b464db66ec23bdd000001f077a08693744af45571d594ff223f1d&format=json&offset=0&limit=2', function (error, response, body) {
-//   console.error('error:', error); // Print the error if one occurred
-//   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//   let data = JSON.parse(body)
-//   console.log('body:',data.records); // Print the HTML for the Google homepage.
+var request = require('request');
+request('https://api.data.gov.in/resource/7d208ae4-5d65-47ec-8cb8-2a7a7ac89f8c?api-key=579b464db66ec23bdd000001f077a08693744af45571d594ff223f1d&format=json&offset=0&limit=2', function (error, response, body) {
+  console.error('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  let data = JSON.parse(body)
+  console.log('body:',data.records); // Print the HTML for the Google homepage.
 
-// });
+});
+app.set("view engine","ejs");
+app.use(express.static(__dirname+"/public"));
+
    
 mongoose
 .connect('mongodb+srv://Rushikesh:JoS27NVgG2UW38jq@cluster0-bui4j.mongodb.net/hospitals?retryWrites=true&w=majority',{useNewUrlParser: true})
@@ -24,13 +28,12 @@ mongoose
     //   });
     //   hospital.save();
     console.log(hospital);
-
   }
   });
-  app.listen(3000,function(){
-    console.log(" Server has started");
-})}).catch(err => {
-  console.log(err);
 })
 
+app.use(HospitalRoutes);   
+app.listen(3000,function(){
+  console.log(" Server has started");
+})
 
