@@ -13,16 +13,6 @@ app.use(HospitalRoutes);
 mongoose
 .connect('mongodb+srv://Rushikesh:JoS27NVgG2UW38jq@cluster0-bui4j.mongodb.net/hospitals?retryWrites=true&w=majority',{useNewUrlParser: true})
 .then(result => {
-  // Hospital.findOne().lean().exec().then(hospital => {
-  //    if (hospital) {
-  //     const hospital = new Hospital({
-  //       _id:"2",name:"G B Pant Hospital, Port Blair",category:"Public",address:"GB Pant Road,City Centre, Port Blair",state:"Andaman and Nicobar Islands",district:"South Andaman",pincode:"744103",telephone:"03192 233665",emergency:"NA", email:"info@carehospitals.com",  website:"http://www.and.nic.in/C_charter/health/dhs/index.html#gph",specialities:"Surgery, Medicine, Gynaecology, Pediatrics, ENT",latitude: "11.675634", longitude:"92.747372",facilities:"NA"
-  //     });
-  //     hospital.save();
-  //   console.log(hospital);
-
-  // }
-  // });
   // console.log(data)
   // data.records.forEach(async function(d){
   //   await  Hospital.insertMany([
@@ -30,14 +20,15 @@ mongoose
   //      _id: d._sr_no_,
   //      name: d.hospitalname,
   //      category: d.hospital_category,
-  //      address: d.hostipalcaretype,
+  //      address: d.address_first_line,
   //      state: d.state,
   //      district: d.district,
-  //      pincode: d. _pincode,
+  //      pincode: d._pincode,
   //      telephone: d.telephone,
   //      emergency: d.emergencynum,
   //      email: d.hospitalprimaryemailid,
   //      website: d.website,
+  //      specialties:d.specialties,
   //      latitude: d._googlemapcorridinate_lati,
   //      longitude: d._googlemapcorridinate_longi,
   //      facilities: d.facilities
@@ -47,7 +38,6 @@ mongoose
   //     console.log(err);
   //   })
   // });
-  
   app.listen(3000,function(){
     console.log(" Server has started");
   })

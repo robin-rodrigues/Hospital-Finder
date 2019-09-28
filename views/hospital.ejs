@@ -59,7 +59,7 @@
               <div id="location"> 
                 <input type="hidden" name="latitude" class="form-control-1" value="none">
                 <input type="hidden" name="longitude" class="form-control-2" value="none">
-                <input type="hidden" value="Search" class="btn btn-default"">
+                <input type="hidden" value="Search" class="btn btn-default">
 
               </div>
             </form>
@@ -112,28 +112,23 @@
                     <button class="btn btn-block btn-secondary " onclick="getLocation()">Hospital Near me!</button>
             </div>
             <div class="col-lg-6 p-4 p-md-5 order-md-last " >
+                <form action="/" method="GET">
+                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                   <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Specialties
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                      <label><input type="checkbox" value="Public" name="Public"> Public</label><br>
+                      <label><input type="checkbox" value="Private" name="Private">Private</label><br>
+                    </ul>
+                  </div>
+                  <button type="submit" value="submit" class="btn btn-secondary btn-lg" id="advance">Search</button>
+                </div>
+                </form>
+              
 
-              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-
-
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Advance Search
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <label><input type="checkbox" value="football" name="specialist"> Football</label><br>
-            <label><input type="checkbox" value="baseball" name="specialist"> Baseball</label><br>
-            <label><input type="checkbox" value="cricket" name="specialist"> Cricket</label><br>
-            <label><input type="checkbox" value="boxing" name="specialist"> Boxing</label><br>
-            <label><input type="checkbox" value="racing" name="specialist"> Racing</label><br>
-            <label><input type="checkbox" value="swimming" name="specialist"> Swimming</label>
-          </ul>
-        </div>
-        <button type="button" class="btn btn-secondary" id="advance">Get Values</button>
-
-        </div>
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script type="text/javascript">
         $(document).ready(function() {
         $("#advance").click(function(){
@@ -143,7 +138,7 @@
           });
           alert("My favourite sports are: " + favorite.join(", "));
         });
-        });</script>
+        });</script> -->
     </div>
       <div class="col-lg-2 p-4 p-md-5 order-md-last ">
        <button class="btn btn-block btn-secondary" onclick="getLocation()">Map</button>

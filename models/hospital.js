@@ -38,8 +38,8 @@ var hospitalSchema = new mongoose.Schema({
     website:{
         type:String
     },
-    specialities:{
-        type:Array
+    specialties:{
+        type:String
     },
     latitude:{
         type:String
