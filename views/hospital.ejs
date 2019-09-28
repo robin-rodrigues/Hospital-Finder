@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hackathon</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="/stylesheets/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/css/animate.css">
+
+    <link rel="stylesheet" href="/stylesheets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/stylesheets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/stylesheets/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/stylesheets/css/aos.css">
+
+    <link rel="stylesheet" href="/stylesheets/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/stylesheets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/stylesheets/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="/stylesheets/css/flaticon.css">
+    <link rel="stylesheet" href="/stylesheets/css/icomoon.css">
+    <link rel="stylesheet" href="/stylesheets/css/style.css">
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.css' rel='stylesheet' />
+    <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+  </head>
+  <body>
+    <style>
+    .dropdown-menu a:hover{background-color:  #d1e0e0;}
+    </style>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css' type='text/css' />
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container d-flex align-items-center">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+          </button>
+          <p class="button-custom order-lg-last mb-0"><a href="appointment.html" class="btn btn-secondary py-2 px-3">Make An Appointment</a></p>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="hospital.html">Hospital<span>finder</span></a></li>
+              <li class="nav-item"><a href="hospital.html" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+              </ul>
+          </div>
+
+            <form action="/" method="GET" class="form-inline" id="myform">
+              <div id="location"> 
+                <input type="hidden" name="latitude" class="form-control-1" value="none">
+                <input type="hidden" name="longitude" class="form-control-2" value="none">
+                <input type="hidden" value="Search" class="btn btn-default"">
+
+              </div>
+            </form>
+          <p id="demo"></p>
+          <p id="demo2"></p>
+  <script>
+      var x = document.getElementById("demo");
+      var y = document.getElementById("demo2");
+
+
+      function getLocation() {
+      if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+      }
+
+      function showPosition(position) {
+      var a=  position.coords.latitude;
+      var b=  position.coords.longitude;
+      document.getElementsByClassName("form-control-1")[0].setAttribute("value", a);  
+      document.getElementsByClassName("form-control-2")[0].setAttribute("value", b);         
+      document.forms["myform"].submit(); 
+      }
+</script>
+ 
+  
+        </div>
+      </nav>
+  
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Helping your Stay Happy one</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section >
+          <div class="overlay"></div>
+          <div class="container mb-5">
+          <div class="row d-flex align-items-stretch no-gutters" >
+            <div class="col-lg-4 p-4 p-md-5 order-md-last ">
+                    <button class="btn btn-block btn-secondary " onclick="getLocation()">Hospital Near me!</button>
+            </div>
+            <div class="col-lg-6 p-4 p-md-5 order-md-last " >
+
+              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Advance Search
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <label><input type="checkbox" value="football" name="specialist"> Football</label><br>
+            <label><input type="checkbox" value="baseball" name="specialist"> Baseball</label><br>
+            <label><input type="checkbox" value="cricket" name="specialist"> Cricket</label><br>
+            <label><input type="checkbox" value="boxing" name="specialist"> Boxing</label><br>
+            <label><input type="checkbox" value="racing" name="specialist"> Racing</label><br>
+            <label><input type="checkbox" value="swimming" name="specialist"> Swimming</label>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-secondary" id="advance">Get Values</button>
+
+        </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+        $("#advance").click(function(){
+          var favorite = [];
+          $.each($("input[name='specialist']:checked"), function(){
+              favorite.push($(this).val());
+          });
+          alert("My favourite sports are: " + favorite.join(", "));
+        });
+        });</script>
+    </div>
+      <div class="col-lg-2 p-4 p-md-5 order-md-last ">
+       <button class="btn btn-block btn-secondary" onclick="getLocation()">Map</button>
+   </div>
+  </div>
+  </div>
+  </section>
+    <section class="ftco-services ftco-no-pb">
+      <div class="container jumbotron border border-primary">
+        <div class="row no-gutters">
+          <% hospitals.forEach(function(hospital){ %>
+          <div class="inline-block d-flex services align-self-stretch p-4 ">
+            <div class="media block-6 d-block text-left">
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading"><%= hospital.name %></h3><p></p>
+                <h3 class="heading"><%= hospital.address %></h3><p></p>
+                <h3 class="heading"><%= hospital.state %></h3><p></p>
+                <p>
+                  <a href="/<%= hospital._id %>" class="btn btn-primary">Map</a>
+                </p>
+              </div>
+            </div>    
+          </div>
+      <% }) %>
+          
+        </div>
+      </div>
+      
+    </section>
+
+        <footer class="ftco-footer ftco-bg-dark ftco-section fixed-bottom" >
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="ftco-footer-widget mb-1">
+                  <h2 class="ftco-heading-2 logo">Hospital<span>finder</span></h2>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                  Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
+                </div>
+
+              </div>
+              <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="ftco-footer-widget mb-1">
+                	<h2 class="ftco-heading-2">Have a Questions?</h2>
+                	<div class="block-23 mb-1">
+    	              <ul>
+    	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+    	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+    	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+    	              </ul>
+    	            </div>
+
+    	            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-1">
+                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                  </ul>
+                </div>
+
+              </div>
+
+              </div>
+            </div>
+            <div class="row mb-0">
+              <div class="col-md-12 text-center">
+
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+              </div>
+            </div>
+          </div>
+        </footer>
+        
+        <!-- <% var latitude = 19 %>
+        <% var longitude = 78%> -->
+        
+        
+    <script src="/stylesheets/js/jquery.min.js"></script>
+    <script src="/stylesheets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/stylesheets/js/popper.min.js"></script>
+    <script src="/stylesheets/js/bootstrap.min.js"></script>
+    <script src="/stylesheets/js/jquery.easing.1.3.js"></script>
+    <script src="/stylesheets/js/jquery.waypoints.min.js"></script>
+    <script src="/stylesheets/js/jquery.stellar.min.js"></script>
+    <script src="/stylesheets/js/owl.carousel.min.js"></script>
+    <script src="/stylesheets/js/jquery.magnific-popup.min.js"></script>
+    <script src="/stylesheets/js/aos.js"></script>
+    <script src="/stylesheets/js/jquery.animateNumber.min.js"></script>
+    <script src="/stylesheets/js/bootstrap-datepicker.js"></script>
+    <script src="/stylesheets/js/jquery.timepicker.min.js"></script>
+    <script src="/stylesheets/js/scrollax.min.js"></script>
+    <script src="/stylesheets/js/google-map.js"></script>
+    <script src="/stylesheets/js/main.js"></script>
+
+
+
+    </html>
