@@ -54,8 +54,11 @@
             <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
             </ul>
         </div>
+        
       </div>
     </nav>
+
+
 
     <section class="hero-wrap hero-wrap-2" style="background-image: url('stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
@@ -111,7 +114,9 @@
         });</script>
     </div>
       <div class="col-lg-2 p-4 p-md-5 order-md-last ">
-       <button class="btn btn-block btn-secondary" onclick="getLocation()">Map</button>
+        <p>
+          <a href="/map" class="btn btn-block btn-secondary" onclick="getLocation()">Map</a>
+        </p>
    </div>
   </div>
   </div>
@@ -127,7 +132,7 @@
                 <h3 class="heading"><%= hospital.address %></h3><p></p>
                 <h3 class="heading"><%= hospital.state %></h3><p></p>
                 <p>
-                  <a href="/<%= hospital._id %>" class="btn btn-primary">Map</a>
+                  <a href="/<%= hospital._id %>" class="btn btn-primary">Details</a>
                 </p>
               </div>
             </div>    

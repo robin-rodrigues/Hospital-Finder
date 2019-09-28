@@ -3,6 +3,7 @@ var router = express.Router();
 var Hospital = require("../models/hospital");
 
 
+
 router.get("/", function(req, res){
     let coordinates = {}
     let nearHospitals = []
@@ -27,6 +28,15 @@ router.get("/", function(req, res){
     })
 })
 
+router.get("/map",function(req,res){
+    Hospital.find({},function(err, allHospitals){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("map",{hospitals:allHospitals});
+        }
+    })
+})
 
 router.get("/:id",function(req,res){
     Hospital.findById(req.params.id).exec(function(err, foundHospital){
@@ -38,5 +48,8 @@ router.get("/:id",function(req,res){
         }
     });
 });
+
+
+
 
 module.exports = router;
