@@ -2,150 +2,105 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <title></title>
+    <title>Create a draggable Marker</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.css' rel='stylesheet' />
-    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.css' rel='stylesheet' />
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-      }
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
 </head>
 <body>
+
+
+<style>
+.coordinates {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    padding:5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
+}
+</style>
+
 <div id='map'></div>
+<div id='menu'>
+    <input id='streets-v11' type='radio' name='rtoggle' value='streets' checked='checked'>
+    <label for='streets'>streets</label>
+    <input id='light-v10' type='radio' name='rtoggle' value='light'>
+    <label for='light'>light</label>
+    <input id='dark-v10' type='radio' name='rtoggle' value='dark'>
+    <label for='dark'>dark</label>
+    <input id='outdoors-v11' type='radio' name='rtoggle' value='outdoors'>
+    <label for='outdoors'>outdoors</label>
+    <input id='satellite-v9' type='radio' name='rtoggle' value='satellite'>
+    <label for='satellite'>satellite</label>
+    </div>
+<pre id='coordinates' class='coordinates'></pre>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css' type='text/css' />
+<div id='map'></div>
+
 <script>
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9kcm9iIiwiYSI6ImNrMTBnZ2NyaTA1bGUzYnZ6c2V2ZmR5OXQifQ.K3DQfl7-XhSHY-Izq6z9VA';
+var coordinates = document.getElementById('coordinates');
 var map = new mapboxgl.Map({
-  container: 'map', // container id
-  style: 'mapbox://styles/mapbox/light-v10', // stylesheet location
-  center: [-84.5, 38.05], // starting position
-  zoom: 11 // starting zoom
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [0, 0],
+    zoom: 2
 });
 
-var hospitals = {
-  type: 'FeatureCollection',
-  features: [
-    { type: 'Feature', properties: { Name: 'VA Medical Center -- Leestown Division', Address: '2250 Leestown Rd' }, geometry: { type: 'Point', coordinates: [-84.539487, 38.072916] } },
-    { type: 'Feature', properties: { Name: 'St. Joseph East', Address: '150 N Eagle Creek Dr' }, geometry: { type: 'Point', coordinates: [-84.440434, 37.998757] } },
-    { type: 'Feature', properties: { Name: 'Central Baptist Hospital', Address: '1740 Nicholasville Rd' }, geometry: { type: 'Point', coordinates: [-84.512283, 38.018918] } },
-    { type: 'Feature', properties: { Name: 'VA Medical Center -- Cooper Dr Division', Address: '1101 Veterans Dr' }, geometry: { type: 'Point', coordinates: [-84.506483, 38.02972] } },
-    { type: 'Feature', properties: { Name: 'Shriners Hospital for Children', Address: '1900 Richmond Rd' }, geometry: { type: 'Point', coordinates: [-84.472941, 38.022564] } },
-    { type: 'Feature', properties: { Name: 'Eastern State Hospital', Address: '627 W Fourth St' }, geometry: { type: 'Point', coordinates: [-84.498816, 38.060791] } },
-    { type: 'Feature', properties: { Name: 'Cardinal Hill Rehabilitation Hospital', Address: '2050 Versailles Rd' }, geometry: { type: 'Point', coordinates: [-84.54212, 38.046568] } },
-    { type: 'Feature', properties: { Name: 'St. Joseph Hospital', Address: '1 St Joseph Dr' }, geometry: { type: 'Point', coordinates: [-84.523636, 38.032475] } },
-    { type: 'Feature', properties: { Name: 'UK Healthcare Good Samaritan Hospital', Address: '310 S Limestone' }, geometry: { type: 'Point', coordinates: [-84.501222, 38.042123] } },
-    { type: 'Feature', properties: { Name: 'UK Medical Center', Address: '800 Rose St' }, geometry: { type: 'Point', coordinates: [-84.508205, 38.031254] } }
-  ]
-};
-var libraries = {
-  type: 'FeatureCollection',
-  features: [
-    { type: 'Feature', properties: { Name: 'Village Branch', Address: '2185 Versailles Rd' }, geometry: { type: 'Point', coordinates: [-84.548369, 38.047876] } },
-    { type: 'Feature', properties: { Name: 'Northside Branch', Address: '1733 Russell Cave Rd' }, geometry: { type: 'Point', coordinates: [-84.47135, 38.079734] } },
-    { type: 'Feature', properties: { Name: 'Central Library', Address: '140 E Main St' }, geometry: { type: 'Point', coordinates: [-84.496894, 38.045459] } },
-    { type: 'Feature', properties: { Name: 'Beaumont Branch', Address: '3080 Fieldstone Way' }, geometry: { type: 'Point', coordinates: [-84.557948, 38.012502] } },
-    { type: 'Feature', properties: { Name: 'Tates Creek Branch', Address: '3628 Walden Dr' }, geometry: { type: 'Point', coordinates: [-84.498679, 37.979598] } },
-    { type: 'Feature', properties: { Name: 'Eagle Creek Branch', Address: '101 N Eagle Creek Dr' }, geometry: { type: 'Point', coordinates: [-84.442219, 37.999437] } }
-  ]
-};
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+ 
+function switchLayer(layer) {
+var layerId = layer.target.id;
+map.setStyle('mapbox://styles/mapbox/' + layerId);
+}
+ 
+for (var i = 0; i < inputs.length; i++) {
+inputs[i].onclick = switchLayer;
+}
+var marker = new mapboxgl.Marker({
+    draggable: true
+})
+    .setLngLat([72.827700, 19.379090])
+    .addTo(map);
 
+function onDragEnd() {
+    var lngLat = marker.getLngLat();
+    coordinates.style.display = 'block';
+    coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+}
 
-map.on('load', function() {
-  map.addLayer({
-    id: 'hospitals',
-    type: 'symbol',
-    source: {
-      type: 'geojson',
-      data: hospitals
+marker.on('dragend', onDragEnd);
+
+// Add geolocate control to the map.
+map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+        enableHighAccuracy: true
     },
-    layout: {
-      'icon-image': 'hospital-15',
-      'icon-allow-overlap': true
-    },
-    paint: { }
-  });
+    trackUserLocation: true
+}));
 
-  map.addLayer({
-    id: 'libraries',
-    type: 'symbol',
-    source: {
-      type: 'geojson',
-      data: libraries
-    },
-    layout: {
-      'icon-image': 'library-15'
-    },
-    paint: { }
-  });
+map.addControl(new MapboxDirections({
+    accessToken: mapboxgl.accessToken
+}), 'top-left');
 
-  map.addSource('nearest-hospital', {
-    type: 'geojson',
-    data: {
-      type: 'FeatureCollection',
-      features: []
-    }
-  });
-});
 
-var popup = new mapboxgl.Popup();
-
-map.on('mousemove', function(e) {
-
-  var features = map.queryRenderedFeatures(e.point, { layers: ['hospitals', 'libraries'] });
-  if (!features.length) {
-    popup.remove();
-    return;
-  }
-
-  var feature = features[0];
-
-  popup.setLngLat(feature.geometry.coordinates)
-  .setHTML(feature.properties.Name)
-  .addTo(map);
-
-  map.getCanvas().style.cursor = features.length ? 'pointer' : '';
-
-});
-
-map.on('click', function(e) {
-  var libraryFeatures = map.queryRenderedFeatures(e.point, { layers: ['libraries'] });
-  if (!libraryFeatures.length) {
-    return;
-  }
-
-  var libraryFeature = libraryFeatures[0];
-
-  var nearestHospital = turf.nearest(libraryFeature, hospitals);
-
-  if (nearestHospital !== null) {
-
-    map.getSource('nearest-hospital').setData({
-      type: 'FeatureCollection',
-      features: [nearestHospital]
-    });
-
-    map.addLayer({
-      id: 'nearest-hospital',
-      type: 'circle',
-      source: 'nearest-hospital',
-      paint: {
-        'circle-radius': 12,
-        'circle-color': '#486DE0'
-      }
-    }, 'hospitals');
-  }
-});
-
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
 </script>
+
+
 </body>
 </html>

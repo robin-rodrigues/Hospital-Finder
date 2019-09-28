@@ -5,19 +5,20 @@ var Hospital = require("../models/hospital");
 
 
 router.get("/", function(req, res){
+    console.log(req.qeury)
     let coordinates = {}
     let nearHospitals = []
-        coordinates.latitude = 19,
-        coordinates.longitude = 72
-    
+        console.log(req.query)
+        coordinates.latitude = req.query.latitude,
+        coordinates.longitude = req.query.longitude
     Hospital.find({}, function(err, allHospitals){
         if(err){
             console.log(err);
             
         }else{
             for(i=0;i<allHospitals.length;i++) {
-            if((coordinates.latitude-Number(allHospitals[i].latitude)<1&&coordinates.longitude-Number(allHospitals[i].longitude)<1)
-            &&(coordinates.latitude-Number(allHospitals[i].latitude)>-1&&coordinates.longitude-Number(allHospitals[i].longitude)>-1))
+            if((coordinates.latitude-Number(allHospitals[i].latitude)<0.25&&coordinates.longitude-Number(allHospitals[i].longitude)<0.25)
+            &&(coordinates.latitude-Number(allHospitals[i].latitude)>-0.25&&coordinates.longitude-Number(allHospitals[i].longitude)>-0.25))
             {
                 // console.log(allHospitals[i]);
                 nearHospitals.push(allHospitals[i]);
@@ -48,8 +49,6 @@ router.get("/:id",function(req,res){
         }
     });
 });
-
-
 
 
 module.exports = router;
