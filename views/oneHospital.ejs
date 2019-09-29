@@ -29,8 +29,8 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.css' rel='stylesheet' />
     <style>
-    body { margin:0; padding:50; }
-    #map { position:absolute; padding: 50px; top:0; bottom:0; width:50%; height: 500px; }
+    body { margin:0; padding:0; }
+    #map { position:absolute; padding: 0px; top:0; bottom:0; width:100%; height: 400px; }
   </style>
   </head>
   <body>
@@ -46,7 +46,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
-        <p class="button-custom order-lg-last mb-0"><a href="appointment.html" class="btn btn-secondary">Make An Appointment</a></p>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="hospital.html">Hospital<span>finder</span></a></li>
@@ -58,7 +57,8 @@
     </nav>
 
     <div id="row">
-    <div id='map'></div>
+    <div class="col-lg-6 col-md-6 "><div id='map'></div></div>
+    
         <script>
         mapboxgl.accessToken = 'pk.eyJ1Ijoicm9kcm9iIiwiYSI6ImNrMTBnZ2NyaTA1bGUzYnZ6c2V2ZmR5OXQifQ.K3DQfl7-XhSHY-Izq6z9VA';
         var map = new mapboxgl.Map({
@@ -80,25 +80,56 @@
         }
         marker.on('dragend', onDragEnd);</script>
     </div>
-    <div id="row">
-        <p><%=hospital.name%></p>
-        <p><%=hospital.category%></p>
-        <p><%=hospital.address%></p>
-        <p><%=hospital.state%></p>
-        <p><%=hospital.district%></p>
-        <p><%=hospital.pincode%></p>
-        <p><%=hospital.telephone%></p>
-        <p><%=hospital.emergency%></p>
-        <p><%=hospital.email%></p>
-        <p><%=hospital.website%></p>
-        <p><%=hospital.specialities%></p>
-        <p><%=hospital.latitude%></p>
-        <p><%=hospital.longitude%></p>
-        <p><%=hospital.facilities%></p>
+    <div class="col-lg-6 col-md-6 p-4 p-md-5 order-md-last float-right mr-4 " style="height:400px">
+        <h1 class="text-primary"><%=hospital.address%></h1>
+        <p>Hospital_category:<span class="text-primary"><%=hospital.category%></span></p>
+        <p>Pincode: <span class="text-primary"><%=hospital.pincode%></span></p>
+        </div>
+        <div class="col-md-6 d-flex align-items-stretch">
+        <div id="map"></div>
+        </div> 
 
+    <div class="container row ml-4"> 
 
-
-    </div>  
+        <div class="row mt-5 pt-2">
+            <div class="col-lg-6">
+              <div class="services-2 d-flex">
+              <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-first-aid-kit"></span></div>
+              <div class="text">
+                <p>Address: <span class="text-primary"><%=hospital.address%></span></p>
+                <p>State: <span class="text-primary"><%=hospital.state%></span></p>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="services-2 d-flex">
+              <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-dropper"></span></div>
+              <div class="text">
+          
+                <p>specialties: <span class="text-primary"><%=hospital.specialties%></span></p>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="services-2 d-flex">
+              <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-experiment-results"></span></div>
+              <div class="text">
+                <p>Phone: <span class="text-primary"><%=hospital.telephone%></span></p>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="services-2 d-flex">
+              <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-heart-rate"></span></div>
+              <div class="text">
+                <p>Website:<a style="width:50px;"                           
+                href="<%=hospital.website%>">
+                <pre><%=hospital.website%></pre></a></p>
+              </div>
+              </div>
+            </div>
+            </div>
+    </div>
 
         
         <!-- <% var latitude = 19 %>
@@ -121,7 +152,4 @@
     <script src="/stylesheets/js/scrollax.min.js"></script>
     <script src="/stylesheets/js/google-map.js"></script>
     <script src="/stylesheets/js/main.js"></script>
-
-
-
     </html>

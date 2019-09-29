@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,7 +47,6 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
           </button>
-          <p class="button-custom order-lg-last mb-0"><a href="appointment.html" class="btn btn-secondary py-2 px-3">Make An Appointment</a></p>
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="hospital.html">Hospital<span>finder</span></a></li>
@@ -59,7 +59,7 @@
               <div id="location"> 
                 <input type="hidden" name="latitude" class="form-control-1" value="none">
                 <input type="hidden" name="longitude" class="form-control-2" value="none">
-                <input type="hidden" value="Search" class="btn btn-default">
+                <input type="hidden" value="Search" class="btn btn-default"">
 
               </div>
             </form>
@@ -88,9 +88,11 @@
 </script>
  
   
-        </div>
-      </nav>
+</div>
+</nav>
   
+
+
 
     <section class="hero-wrap hero-wrap-2" style="background-image: url('stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
@@ -102,72 +104,201 @@
         </div>
       </div>
     </section>
-
-
-    <section >
-          <div class="overlay"></div>
-          <div class="container mb-5">
-          <div class="row d-flex align-items-stretch no-gutters" >
-            <div class="col-lg-4 p-4 p-md-5 order-md-last ">
-                    <button class="btn btn-block btn-secondary " onclick="getLocation()">Hospital Near me!</button>
-            </div>
-            <div class="col-lg-6 p-4 p-md-5 order-md-last " >
-                <form action="/" method="GET">
-                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                   <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Specialties
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                      <label><input type="checkbox" value="Public" name="Public"> Public</label><br>
-                      <label><input type="checkbox" value="Private" name="Private">Private</label><br>
-                    </ul>
-                  </div>
-                  <button type="submit" value="submit" class="btn btn-secondary btn-lg" id="advance">Search</button>
-                </div>
-                </form>
+  
+        <section class="ftco-section ftco-no-pt ftco-no-pb  ">
               
-
-      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script type="text/javascript">
-        $(document).ready(function() {
-        $("#advance").click(function(){
-          var favorite = [];
-          $.each($("input[name='specialist']:checked"), function(){
-              favorite.push($(this).val());
-          });
-          alert("My favourite sports are: " + favorite.join(", "));
-        });
-        });</script> -->
-    </div>
-      <div class="col-lg-2 p-4 p-md-5 order-md-last ">
-       <button class="btn btn-block btn-secondary" onclick="getLocation()">Map</button>
-   </div>
-  </div>
-  </div>
-  </section>
+              <div class="row d-flex align-items-stretch no-gutters" style="background-color:#FF8800">
+                <div class="col-lg-4 order-md-last ">
+                        <button class="btn btn-block btn-secondary btn-lg " onclick="getLocation()">Hospital Near me!</button>
+                </div>
+                <div class="col-lg-5 order-md-last " >
+                  
+      <form action="/" method="GET">
+                      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                       <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Specialist
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                          <label><input type="checkbox" value="Public" name="public"> Public</label><br>
+                          <label><input type="checkbox" value="Private" name="private"> Private</label><br>
+                      </div>
+                       </ul>
+            </div>
+            <button type="submit" value="submit" class="btn btn-secondary btn-lg" id="advance">Search</button>
+        
+        </form>  
+        </div>
+<!--   
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    <script type="text/javascript">
+                $(document).ready(function() {
+                $("#advance").click(function(){
+                  var favorite = [];
+                  $.each($("input[name='specialist']:checked"), function(){
+                      favorite.push($(this).val());
+                  });
+                  alert("My favourite sports are: " + favorite.join(", "));
+                });
+                });
+                </script> -->
+  
+                <div class="col-lg-3 order-md-last">
+                        <button class="btn btn-block btn-secondary btn-lg " ><a style="color:white"href="/map">Map</a> </button>
+                </div>
+                </div>
+            </div>
+          </section>
     <section class="ftco-services ftco-no-pb">
       <div class="container jumbotron border border-primary">
         <div class="row no-gutters">
           <% hospitals.forEach(function(hospital){ %>
-          <div class="inline-block d-flex services align-self-stretch p-4 ">
-            <div class="media block-6 d-block text-left">
-              <div class="media-body p-2 mt-3">
-                <h3 class="heading"><%= hospital.name %></h3><p></p>
-                <h3 class="heading"><%= hospital.address %></h3><p></p>
-                <h3 class="heading"><%= hospital.state %></h3><p></p>
-                <p>
-                  <a href="/<%= hospital._id %>" class="btn btn-primary">Map</a>
-                </p>
+          <div class="inline-block d-flex services p-3 mb-2 rounded">
+            
+
+                <div class="media-body p-1 mt-1">
+                  
+                  <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                      <div class="card">
+                        <div class="card-body">
+                            <img src="https://img.icons8.com/wired/64/000000/employee-card.png" class="float-left mr-1" > 
+                            <h3 class="heading text-primary ">Name: </h3>
+                            <h6 class="heading text-dark"><%= hospital.name %></h6>
+                        </div>
+                      </div>
+                        
+                        
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card">
+                          <div class="card-body">
+                              <img src="https://img.icons8.com/color/48/000000/phone.png" class="float-left" >
+                              <h3 class="heading text-primary">Address</h3>
+                              <h6 class="heading text-dark"><%= hospital.address %></h6>
+                          </div>
+                        </div>
+                          
+                          
+                      </div>
+                      <div class="col-lg-3 col-md-6 col-sm-12">
+                          <div class="card">
+                            <div class="card-body">
+                                <img src="https://img.icons8.com/plasticine/64/000000/domain.png" class="float-left">
+                                <h3 class="heading text-primary">Website: </h3>
+                                <h6 class="heading text-dark"><a href="<%= hospital.address %>"><%= hospital.website %></a></h6>
+                            </div>
+                          </div>
+                            
+                            
+                        </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <a href="/<%= hospital._id %>" class="btn btn-secondary btn-lg m-4">Details</a>
+                    </div>
+                  </div>
+                   
+                </div>
               </div>
-            </div>    
-          </div>
       <% }) %>
           
         </div>
       </div>
       
     </section>
+
+    <section id="about" class="ftco-section ftco-no-pt">
+            <div class="container">
+              <div class="row justify-content-center mb-5 pb-2">
+                <div class="col-md-8 text-center heading-section ftco-animate">
+                  <span class="subheading">Coders</span>
+                  <h2 class="mb-4">Our Team</h2>
+                  <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                  <div class="staff">
+                    <div class="img-wrap d-flex align-items-stretch">
+                      <div class="img align-self-stretch" style="background-image: url(images/doc-1.jpg);"></div>
+                    </div>
+                    <div class="text pt-3 text-center">
+                      <h3>Rahul Trivedi</h3>
+                      <span class="position mb-2">Front-END</span>
+                      <div class="faded">
+                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+                        <ul class="ftco-social text-center">
+                          <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                  <div class="staff">
+                    <div class="img-wrap d-flex align-items-stretch">
+                      <div class="img align-self-stretch" style="background-image: url(images/doc-2.jpg);"></div>
+                    </div>
+                    <div class="text pt-3 text-center">
+                      <h3>Ravindra Jain</h3>
+                      <span class="position mb-2">Front-END</span>
+                      <div class="faded">
+                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+                        <ul class="ftco-social text-center">
+                          <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                  <div class="staff">
+                    <div class="img-wrap d-flex align-items-stretch">
+                      <div class="img align-self-stretch" style="background-image: url(images/doc-3.jpg);"></div>
+                    </div>
+                    <div class="text pt-3 text-center">
+                      <h3>Robin Rodrigues</h3>
+                      <span class="position mb-2">Back-End</span>
+                      <div class="faded">
+                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+                        <ul class="ftco-social text-center">
+                          <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                  <div class="staff">
+                    <div class="img-wrap d-flex align-items-stretch">
+                      <div class="img align-self-stretch" style="background-image: url(images/doc-4.jpg);"></div>
+                    </div>
+                    <div class="text pt-3 text-center">
+                      <h3>Rushikesh Shinde</h3>
+                      <span class="position mb-2">Back-END</span>
+                      <div class="faded">
+                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+                        <ul class="ftco-social text-center">
+                          <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+                          <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
         <footer class="ftco-footer ftco-bg-dark ftco-section fixed-bottom" >
           <div class="container">
@@ -183,16 +314,16 @@
               </div>
               <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="ftco-footer-widget mb-1">
-                	<h2 class="ftco-heading-2">Have a Questions?</h2>
-                	<div class="block-23 mb-1">
-    	              <ul>
-    	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-    	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-    	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-    	              </ul>
-    	            </div>
+                  <h2 class="ftco-heading-2">Have a Questions?</h2>
+                  <div class="block-23 mb-1">
+                    <ul>
+                      <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                      <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                      <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                    </ul>
+                  </div>
 
-    	            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-1">
+                  <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-1">
                     <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                     <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                     <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>

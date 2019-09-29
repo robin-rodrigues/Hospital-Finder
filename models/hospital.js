@@ -47,9 +47,9 @@ var hospitalSchema = new mongoose.Schema({
     longitude:{
         type:String
     },
-    facilities:[
-        {type:String}
-    ]
+    facilities:{
+        type:String
+    }
     
     
 })

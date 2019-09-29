@@ -4,40 +4,55 @@ var Hospital = require("../models/hospital");
 // let filter = {}
 
 
+
 router.get("/", function(req, res){
     // console.log(req.qeury)
     let coordinates = {}
     let nearHospitals = []
     let filter ={}
-        if(req.query.latitude || req.query.longitude){
-            // console.log(req.query.latitude)
-            filter.latitude= req.query.latitude,
-            filter.longitude= req.query.longitude
-            coordinates.latitude = filter.latitude,
-            coordinates.longitude = filter.longitude
-
-            Hospital.find({}, function(err, allHospitals){
+            console.log(req.query)
+            if(req.query.public){
+                filter.category = req.query.public
+            }
+            if(req.query.private){
+                filter.category = req.query.private
+            }
+            coordinates.latitude = req.query.latitude,
+            coordinates.longitude =req.query.longitude
+            console.log(filter.category);
+            Hospital.find({
+                 category: filter.category
+            },
+             function(err, allHospitals){
                 if(err){
                     console.log(err);
                     
                 }else{
+                    console.log(allHospitals);
                     for(i=0;i<allHospitals.length;i++) {
                     if((coordinates.latitude-Number(allHospitals[i].latitude)<0.25&&coordinates.longitude-Number(allHospitals[i].longitude)<0.25)
                     &&(coordinates.latitude-Number(allHospitals[i].latitude)>-0.25&&coordinates.longitude-Number(allHospitals[i].longitude)>-0.25))
                     {
                         // console.log(allHospitals[i]);
                         nearHospitals.push(allHospitals[i]);
+                        
                     }
                     }
-                    res.render("hospital", {hospitals: nearHospitals});
-        }
+                    res.render("hospital", {hospitals: nearHospitals});        }
     } 
-    )}else{
-        
-    }
+    )}
       
-})
+)
 
+router.get("/map",function(req,res){
+    Hospital.find({},function(err, allHospitals){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("map",{hospitals:allHospitals});
+        }
+    })
+})
 
 router.get("/:id",function(req,res){
     Hospital.findById(req.params.id).exec(function(err, foundHospital){
