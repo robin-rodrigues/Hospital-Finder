@@ -50,8 +50,7 @@
 
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="hospital.html">Hospital<span>finder</span></a></li>
-              <li class="nav-item"><a href="hospital.html" class="nav-link">Home</a></li>
+              <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="/">Hospital<span>finder</span></a></li>
               <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
               </ul>
           </div>
@@ -76,6 +75,7 @@
       navigator.geolocation.getCurrentPosition(showPosition);
       } else {
       x.innerHTML = "Geolocation is not supported by this browser.";
+
       }
       }
 
@@ -85,6 +85,7 @@
       document.getElementsByClassName("form-control-1")[0].setAttribute("value", a);  
       document.getElementsByClassName("form-control-2")[0].setAttribute("value", b);         
       document.forms["myform"].submit(); 
+      document.getElementsByClassName(".opacity").setAttribute("class","democlass")
       }
 </script>
  
@@ -95,67 +96,53 @@
 
 
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-              <h1 class="mb-2 bread">Helping your Stay Happy one</h1>
+              <h1 class="mb-2 bread">Find right Hospital at right time!</h1>
             </div>
           </div>
         </div>
       </section>
   
-  
-        <section class="ftco-section ftco-no-pt ftco-no-pb  ">
+      <style>
+      .dmoclass{
+        opacity: 100;
+      }
+      </style>
+        <section class="ftco-section ftco-no-pt ftco-no-pb opacity " >
               
               <div class="row d-flex align-items-stretch no-gutters" style="background-color:#FF8800">
+                <div class="col-lg-4" >
+  
+                  <form action="/" method="GET">
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                     <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-blocks btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Category
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <label><input type="checkbox" value="public" name="specialist">Public</label><br>
+                        <label><input type="checkbox" value="private" name="specialist">Private</label><br>
+                      </ul>
+                    </div>
+                  </div>
+                  </form>
+                </div>
                 <div class="col-lg-4 order-md-last ">
                         <button class="btn btn-block btn-secondary btn-lg " onclick="getLocation()">Hospital Near me!</button>
                 </div>
-                <div class="col-lg-5 order-md-last " >
-  
-                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  
-  
-      <div class="btn-group" role="group">
-        <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle ml-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Advance Search
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <label><input type="checkbox" value="football" name="specialist"> Football</label><br>
-          <label><input type="checkbox" value="baseball" name="specialist"> Baseball</label><br>
-          <label><input type="checkbox" value="cricket" name="specialist"> Cricket</label><br>
-          <label><input type="checkbox" value="boxing" name="specialist"> Boxing</label><br>
-          <label><input type="checkbox" value="racing" name="specialist"> Racing</label><br>
-          <label><input type="checkbox" value="swimming" name="specialist"> Swimming</label>
-        </ul>
-      </div>
-      <button type="button" class="btn btn-secondary btn-lg" id="advance">Get Values</button>
-  
-    </div>
-  
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script type="text/javascript">
-  $(document).ready(function() {
-  $("#advance").click(function(){
-    var favorite = [];
-    $.each($("input[name='specialist']:checked"), function(){
-        favorite.push($(this).val());
-    });
-    alert("My favourite sports are: " + favorite.join(", "));
-  });
-  });
-  </script>
-                </div>
+               
                 <div class="col-lg-3 order-md-last ">
-                        <button class="btn btn-block btn-secondary btn-lg "><a href="/map">Map</a> </button>
+                        <button class="btn btn-block btn-secondary btn-lg "><a href="/map" style="color: white">Map</a> </button>
                 </div>
                 </div>
             </div>
           </section>
-    <section class="ftco-services ftco-no-pb">
-      <div class="container jumbotron border border-primary">
+    <section class="ftco-services ftco-no-pb" id="sec">
+      <div class="container jumbotron border border-primary" >
         <div class="row no-gutters">
           <% hospitals.forEach(function(hospital){ %>
           <div class="inline-block d-flex services p-3 mb-2 rounded">
@@ -230,7 +217,6 @@
                       <h3>Rahul Trivedi</h3>
                       <span class="position mb-2">Front-END</span>
                       <div class="faded">
-                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
                         <ul class="ftco-social text-center">
                           <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                           <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -250,7 +236,6 @@
                       <h3>Ravindra Jain</h3>
                       <span class="position mb-2">Front-END</span>
                       <div class="faded">
-                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
                         <ul class="ftco-social text-center">
                           <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                           <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -270,7 +255,6 @@
                       <h3>Robin Rodrigues</h3>
                       <span class="position mb-2">Back-End</span>
                       <div class="faded">
-                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
                         <ul class="ftco-social text-center">
                           <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                           <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -290,7 +274,7 @@
                       <h3>Rushikesh Shinde</h3>
                       <span class="position mb-2">Back-END</span>
                       <div class="faded">
-                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+                        
                         <ul class="ftco-social text-center">
                           <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                           <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>

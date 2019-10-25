@@ -2,8 +2,6 @@ var express = require("express");
 var router = express.Router();
 var Hospital = require("../models/hospital");
 
-
-
 router.get("/", function(req, res){
     console.log(req.qeury)
     let coordinates = {}
@@ -17,8 +15,8 @@ router.get("/", function(req, res){
             
         }else{
             for(i=0;i<allHospitals.length;i++) {
-            if((coordinates.latitude-Number(allHospitals[i].latitude)<0.25&&coordinates.longitude-Number(allHospitals[i].longitude)<0.25)
-            &&(coordinates.latitude-Number(allHospitals[i].latitude)>-0.25&&coordinates.longitude-Number(allHospitals[i].longitude)>-0.25))
+            if((coordinates.latitude-Number(allHospitals[i].latitude)<0.5&&coordinates.longitude-Number(allHospitals[i].longitude)<0.5)
+            &&(coordinates.latitude-Number(allHospitals[i].latitude)>-0.5&&coordinates.longitude-Number(allHospitals[i].longitude)>-0.5))
             {
                 // console.log(allHospitals[i]);
                 nearHospitals.push(allHospitals[i]);
@@ -38,6 +36,8 @@ router.get("/map",function(req,res){
         }
     })
 })
+
+
 
 router.get("/:id",function(req,res){
     Hospital.findById(req.params.id).exec(function(err, foundHospital){
