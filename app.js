@@ -11,33 +11,70 @@ app.use(express.static(__dirname+"/public"));
 app.use(HospitalRoutes); 
 
 mongoose
-.connect('mongodb+srv://Rushikesh:JoS27NVgG2UW38jq@cluster0-bui4j.mongodb.net/hospitals?retryWrites=true&w=majority',{useNewUrlParser: true})
+.connect('mongodb+srv://Rushikesh:JoS27NVgG2UW38jq@cluster0-bui4j.mongodb.net/hospitals?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true})
 .then(result => {
   // console.log(data)
-  // data.records.forEach(async function(d){
-  //   await  Hospital.insertMany([
+  // // data.records.forEach(async function(d){
+  //  Hospital.insertMany([
   //    {
-  //      _id: d._sr_no_,
-  //      name: d.hospitalname,
-  //      category: d.hospital_category,
-  //      address: d.address_first_line,
-  //      state: d.state,
-  //      district: d.district,
-  //      pincode: d._pincode,
-  //      telephone: d.telephone,
-  //      emergency: d.emergencynum,
-  //      email: d.hospitalprimaryemailid,
-  //      website: d.website,
-  //      specialties:d.specialties,
-  //      latitude: d._googlemapcorridinate_lati,
-  //      longitude: d._googlemapcorridinate_longi,
-  //      facilities: d.facilities
-  //    }
-  //   ])
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
-  // });
+  //      _id: 1,
+  //      name: "Bhaktivedanta",
+  //      category: "Public",
+  //      address: "Thane",
+  //      location: {
+  //       type: "Point",
+  //       coordinates: [
+  //        "72.870265",
+  //        "19.270236"
+      
+  //       ]
+  //     }
+  //   },{
+  //     _id: 2,
+  //      name: "Breach candy",
+  //      category: "Private",
+  //      address: "Mumbai",
+  //      location: {
+  //       type: "Point",
+  //       coordinates: [
+  //         "72.804416",
+  //         "18.972479"
+      
+  //       ]
+  //     }
+  //     },{
+  //       _id: 3,
+  //       name: "Sahyog Hospital",
+  //       category: "Private",
+  //       address: "Patna",
+  //       location: {
+  //        type: "Point",
+  //        coordinates: [
+  //          "85.108359",
+  //          "25.628991" 
+  //        ]
+  //      }
+  //     }
+      
+  //      //  state: d.state,
+  //     //  district: d.district,
+  //     //  pincode: d._pincode,
+  //     //  telephone: d.telephone,
+  //     //  emergency: d.emergencynum,
+  //     //  email: d.hospitalprimaryemailid,
+  //     //  website: d.website,
+  //     //  specialties:d.specialties,
+  //     // latitude: d._googlemapcorridinate_lati,
+  //     // longitude: d._googlemapcorridinate_longi,
+  //     //  facilities: d.facilities
+     
+    // ])
+    // Hospital.listIndexes().then(indexes => {
+    //   console.log(indexes);
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    // })
   app.listen(3000,function(){
     console.log(" Server has started");
   })

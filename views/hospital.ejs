@@ -59,8 +59,25 @@
               <div id="location"> 
                 <input type="hidden" name="latitude" class="form-control-1" value="none">
                 <input type="hidden" name="longitude" class="form-control-2" value="none">
-                <input type="hidden" value="Search" class="btn btn-default"">
-
+                <input type="hidden" value="Search" class="btn btn-default">
+                <div >
+                  
+                
+                                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                   <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Specialist
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                      <label><input type="checkbox"   value= "Public" name="public"> Public</label><br>
+                                      <label><input type="checkbox"  value= "Private" name="private"> Private</label><br>
+                                  </div>
+                                   </ul>
+                </div>
+                        <button  onclick="getLocation()" class="btn btn-secondary btn-lg" id="advance">Search</button>
+                    
+                   
+                    </div>
               </div>
             </form>
           <p id="demo"></p>
@@ -111,9 +128,11 @@
                 <div class="col-lg-4 order-md-last ">
                         <button class="btn btn-block btn-secondary btn-lg " onclick="getLocation()">Hospital Near me!</button>
                 </div>
-                <div class="col-lg-5 order-md-last " >
+              <div class="col-lg-5 order-md-last " >
                   
-      <form action="/" method="GET">
+      <!-- <form action="/" method="GET" >
+                      <input type="hidden" name="latitude" class="form-control-1" value="none">
+                      <input type="hidden" name="longitude" class="form-control-2" value="none">
                       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                        <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -124,11 +143,11 @@
                           <label><input type="checkbox" value="Private" name="private"> Private</label><br>
                       </div>
                        </ul>
-            </div>
-            <button type="submit" value="submit" class="btn btn-secondary btn-lg" id="advance">Search</button>
+                    </div>
+            <button  type="submit" value="submit" class="btn btn-secondary btn-lg" id="advance">Search</button>
         
         </form>  
-        </div>
+        </div>  -->
 <!--   
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                     <script type="text/javascript">
