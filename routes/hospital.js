@@ -1,31 +1,38 @@
 var express = require("express");
 var router = express.Router();
 var Hospital = require("../models/hospital");
+// let filter = {}
 
 router.get("/", function(req, res){
-    console.log(req.qeury)
+    // console.log(req.qeury)
     let coordinates = {}
-    let nearHospitals = []
-        console.log(req.query)
-        coordinates.latitude = req.query.latitude,
-        coordinates.longitude = req.query.longitude
-    Hospital.find({}, function(err, allHospitals){
-        if(err){
-            console.log(err);
-            
-        }else{
-            for(i=0;i<allHospitals.length;i++) {
-            if((coordinates.latitude-Number(allHospitals[i].latitude)<0.5&&coordinates.longitude-Number(allHospitals[i].longitude)<0.5)
-            &&(coordinates.latitude-Number(allHospitals[i].latitude)>-0.5&&coordinates.longitude-Number(allHospitals[i].longitude)>-0.5))
-            {
-                // console.log(allHospitals[i]);
-                nearHospitals.push(allHospitals[i]);
-            }
-            }
-            res.render("hospital", {hospitals: nearHospitals});
-        }
-    })
-})
+    let filter ={}
+            console.log(req.query)
+            coordinates.latitude = req.query.latitude ? req.query.latitude : 0,
+            coordinates.longitude = req.query.longitude ? req.query.longitude : 0
+           
+            Hospital.find({
+                    location:{ $near : { $geometry: { type: "Point",  coordinates: [ Number(coordinates.longitude),Number(coordinates.latitude)] },$maxDistance: 500000} }
+                }, function(err, allHospitals){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        console.log(allHospitals);
+                            if(req.query.public && req.query.private){
+                                allHospitals = allHospitals;
+                            }
+                            else {
+                                if(req.query.public){
+                                allHospitals = allHospitals.filter(hospital => hospital.category == req.query.public);
+                                }
+                                if(req.query.private){
+                                    allHospitals = allHospitals.filter(hospital => hospital.category == req.query.private);
+                                }
+                            }
+                         res.render("hospital", {hospitals: allHospitals});        
+                    }
+                })
+            })
 
 router.get("/map",function(req,res){
     Hospital.find({},function(err, allHospitals){

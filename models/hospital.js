@@ -3,50 +3,45 @@ var mongoose = require('mongoose');
 var hospitalSchema = new mongoose.Schema({
     _id:Number,
     name:{
-        required: true,
         type:String
     },
     category:String,
     address:{
-        required: true,
-        type:String
+        type:String,
     },
     state:{
-        required: true,
-        type:String
+        type:String,
     },
     district:{
-        required: true,
-        type:String
+        type:String,
     },
     pincode:{
-        required: true,
-        type:String
+        type:String,
     },
     telephone:{
-        required: true,
-        type:String
+        type:String,
     },
     emergency:{
-        required: true,
-        type:String
+        type:String,
     },
     email:{
-        required: true,
-        type:String
+        type:String,
     },
     website:{
-        type:String
+        type:String,
     },
-    specialities:{
-        type:Array
+    specialties:{
+        type:String,
     },
-    latitude:{
-        type:String
-    },
-    longitude:{
-        type:String
-    },
+    location:{
+        type: {
+            type:String
+        },
+        coordinates:[
+            Number,
+            Number
+        ],
+        },
     facilities:{
         type:String
     }

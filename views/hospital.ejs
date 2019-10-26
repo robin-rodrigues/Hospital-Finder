@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,10 +46,10 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
           </button>
-
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="/">Hospital<span>finder</span></a></li>
+              <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
               <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
               </ul>
           </div>
@@ -59,8 +58,25 @@
               <div id="location"> 
                 <input type="hidden" name="latitude" class="form-control-1" value="none">
                 <input type="hidden" name="longitude" class="form-control-2" value="none">
-                <input type="hidden" value="Search" class="btn btn-default"">
-
+                <input type="hidden" value="Search" class="btn btn-default">
+                <div >
+                  
+                
+                                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                   <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Specialist
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                      <label><input type="checkbox"   value= "Public" name="public"> Public</label><br>
+                                      <label><input type="checkbox"  value= "Private" name="private"> Private</label><br>
+                                  </div>
+                                   </ul>
+                </div>
+                        <button  onclick="getLocation()" class="btn btn-secondary btn-lg" id="advance">Search</button>
+                    
+                   
+                    </div>
               </div>
             </form>
           <p id="demo"></p>
@@ -68,24 +84,19 @@
   <script>
       var x = document.getElementById("demo");
       var y = document.getElementById("demo2");
-
-
       function getLocation() {
       if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
       } else {
       x.innerHTML = "Geolocation is not supported by this browser.";
-
       }
       }
-
       function showPosition(position) {
       var a=  position.coords.latitude;
       var b=  position.coords.longitude;
       document.getElementsByClassName("form-control-1")[0].setAttribute("value", a);  
       document.getElementsByClassName("form-control-2")[0].setAttribute("value", b);         
       document.forms["myform"].submit(); 
-      document.getElementsByClassName(".opacity").setAttribute("class","democlass")
       }
 </script>
  
@@ -97,57 +108,68 @@
 
 
     <section class="hero-wrap hero-wrap-2" style="background-image: url('stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-              <h1 class="mb-2 bread">Find right Hospital at right time!</h1>
-            </div>
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Helping your Stay Happy one</h1>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
   
-      <style>
-      .dmoclass{
-        opacity: 100;
-      }
-      </style>
-        <section class="ftco-section ftco-no-pt ftco-no-pb opacity " >
+        <section class="ftco-section ftco-no-pt ftco-no-pb  ">
               
               <div class="row d-flex align-items-stretch no-gutters" style="background-color:#FF8800">
-                <div class="col-lg-4" >
-  
-                  <form action="/" method="GET">
-                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                     <div class="btn-group" role="group">
-                      <button id="btnGroupDrop1" type="button" class="btn btn-blocks btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Category
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <label><input type="checkbox" value="public" name="specialist">Public</label><br>
-                        <label><input type="checkbox" value="private" name="specialist">Private</label><br>
-                      </ul>
-                    </div>
-                  </div>
-                  </form>
-                </div>
                 <div class="col-lg-4 order-md-last ">
                         <button class="btn btn-block btn-secondary btn-lg " onclick="getLocation()">Hospital Near me!</button>
                 </div>
-               
-                <div class="col-lg-3 order-md-last ">
-                        <button class="btn btn-block btn-secondary btn-lg "><a href="/map" style="color: white">Map</a> </button>
+              <div class="col-lg-5 order-md-last " >
+                  
+      <!-- <form action="/" method="GET" >
+                      <input type="hidden" name="latitude" class="form-control-1" value="none">
+                      <input type="hidden" name="longitude" class="form-control-2" value="none">
+                      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                       <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Specialist
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                          <label><input type="checkbox" value="Public" name="public"> Public</label><br>
+                          <label><input type="checkbox" value="Private" name="private"> Private</label><br>
+                      </div>
+                       </ul>
+                    </div>
+            <button  type="submit" value="submit" class="btn btn-secondary btn-lg" id="advance">Search</button>
+        
+        </form>  
+        </div>  -->
+<!--   
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    <script type="text/javascript">
+                $(document).ready(function() {
+                $("#advance").click(function(){
+                  var favorite = [];
+                  $.each($("input[name='specialist']:checked"), function(){
+                      favorite.push($(this).val());
+                  });
+                  alert("My favourite sports are: " + favorite.join(", "));
+                });
+                });
+                </script> -->
+  
+                <div class="col-lg-3 order-md-last">
+                        <button class="btn btn-block btn-secondary btn-lg " ><a style="color:white"href="/map">Map</a> </button>
                 </div>
                 </div>
             </div>
           </section>
-    <section class="ftco-services ftco-no-pb" id="sec">
-      <div class="container jumbotron border border-primary" >
+    <section class="ftco-services ftco-no-pb">
+      <div class="container jumbotron border border-primary">
         <div class="row no-gutters">
           <% hospitals.forEach(function(hospital){ %>
           <div class="inline-block d-flex services p-3 mb-2 rounded">
             
-
                 <div class="media-body p-1 mt-1">
                   
                   <div class="row">
@@ -211,12 +233,13 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="staff">
                     <div class="img-wrap d-flex align-items-stretch">
-                      <div class="img align-self-stretch" style="background-image: url(stylesheets/images/Rahul.png);"></div>
+                      <div class="img align-self-stretch" style="background-image: url(images/doc-1.jpg);"></div>
                     </div>
                     <div class="text pt-3 text-center">
                       <h3>Rahul Trivedi</h3>
                       <span class="position mb-2">Front-END</span>
                       <div class="faded">
+                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
                         <ul class="ftco-social text-center">
                           <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                           <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -230,12 +253,13 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="staff">
                     <div class="img-wrap d-flex align-items-stretch">
-                      <div class="img align-self-stretch" style="background-image: url(stylesheets/images/Ravi.jpg);"></div>
+                      <div class="img align-self-stretch" style="background-image: url(images/doc-2.jpg);"></div>
                     </div>
                     <div class="text pt-3 text-center">
                       <h3>Ravindra Jain</h3>
                       <span class="position mb-2">Front-END</span>
                       <div class="faded">
+                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
                         <ul class="ftco-social text-center">
                           <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                           <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -249,12 +273,13 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="staff">
                     <div class="img-wrap d-flex align-items-stretch">
-                      <div class="img align-self-stretch" style="background-image: url(stylesheets/images/Robin.jpg);"></div>
+                      <div class="img align-self-stretch" style="background-image: url(images/doc-3.jpg);"></div>
                     </div>
                     <div class="text pt-3 text-center">
                       <h3>Robin Rodrigues</h3>
                       <span class="position mb-2">Back-End</span>
                       <div class="faded">
+                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
                         <ul class="ftco-social text-center">
                           <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                           <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -268,13 +293,13 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="staff">
                     <div class="img-wrap d-flex align-items-stretch">
-                      <div class="img align-self-stretch" style="background-image: url(stylesheets/images/Rushikesh.png);"></div>
+                      <div class="img align-self-stretch" style="background-image: url(images/doc-4.jpg);"></div>
                     </div>
                     <div class="text pt-3 text-center">
                       <h3>Rushikesh Shinde</h3>
                       <span class="position mb-2">Back-END</span>
                       <div class="faded">
-                        
+                        <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
                         <ul class="ftco-social text-center">
                           <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                           <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -326,11 +351,16 @@
             <div class="row mb-0">
               <div class="col-md-12 text-center">
 
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
               </div>
             </div>
-        
+          </div>
         </footer>
         
+        <!-- <% var latitude = 19 %>
+        <% var longitude = 78%> -->
         
         
     <script src="/stylesheets/js/jquery.min.js"></script>
@@ -349,4 +379,7 @@
     <script src="/stylesheets/js/scrollax.min.js"></script>
     <script src="/stylesheets/js/google-map.js"></script>
     <script src="/stylesheets/js/main.js"></script>
+
+
+
     </html>
