@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,8 +48,8 @@
           </button>
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="hospital.html">Hospital<span>finder</span></a></li>
-              <li class="nav-item"><a href="hospital.html" class="nav-link">Home</a></li>
+              <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="/">Hospital<span>finder</span></a></li>
+              <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
               <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
               </ul>
           </div>
@@ -85,8 +84,6 @@
   <script>
       var x = document.getElementById("demo");
       var y = document.getElementById("demo2");
-
-
       function getLocation() {
       if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -94,7 +91,6 @@
       x.innerHTML = "Geolocation is not supported by this browser.";
       }
       }
-
       function showPosition(position) {
       var a=  position.coords.latitude;
       var b=  position.coords.longitude;
@@ -174,7 +170,6 @@
           <% hospitals.forEach(function(hospital){ %>
           <div class="inline-block d-flex services p-3 mb-2 rounded">
             
-
                 <div class="media-body p-1 mt-1">
                   
                   <div class="row">

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 var express     = require('express'),
     app         = express(),
     bodyParser  = require('body-parser'),
@@ -11,7 +13,7 @@ app.use(express.static(__dirname+"/public"));
 app.use(HospitalRoutes); 
 
 mongoose
-.connect('mongodb+srv://Rushikesh:JoS27NVgG2UW38jq@cluster0-bui4j.mongodb.net/hospitals?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true})
+.connect(process.env.CLOUD_MONGODB_PATH ,{useNewUrlParser: true, useUnifiedTopology: true})
 .then(result => {
   // console.log(data)
   // // data.records.forEach(async function(d){

@@ -3,8 +3,6 @@ var router = express.Router();
 var Hospital = require("../models/hospital");
 // let filter = {}
 
-
-
 router.get("/", function(req, res){
     // console.log(req.qeury)
     let coordinates = {}
@@ -14,7 +12,7 @@ router.get("/", function(req, res){
             coordinates.longitude = req.query.longitude ? req.query.longitude : 0
            
             Hospital.find({
-                    location:{ $near : { $geometry: { type: "Point",  coordinates: [ Number(coordinates.longitude),Number(coordinates.latitude)] },$maxDistance: 1000000} }
+                    location:{ $near : { $geometry: { type: "Point",  coordinates: [ Number(coordinates.longitude),Number(coordinates.latitude)] },$maxDistance: 500000} }
                 }, function(err, allHospitals){
                     if(err){
                         console.log(err);
@@ -45,6 +43,8 @@ router.get("/map",function(req,res){
         }
     })
 })
+
+
 
 router.get("/:id",function(req,res){
     Hospital.findById(req.params.id).exec(function(err, foundHospital){
