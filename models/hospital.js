@@ -44,6 +44,9 @@ var hospitalSchema = new mongoose.Schema({
         },
     facilities:{
         type:String
+    },
+    bloodbank:{
+        type:String
     }
     
     
