@@ -43,16 +43,17 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css' type='text/css' />
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg" id="ftco-navbar"
+    style="background-image: url(/stylesheets/images/download.jpg);">
         <div class="container d-flex align-items-center">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
           </button>
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="/">Hospital<span>finder</span></a></li>
-              <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-              <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+              <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="/" style="color: beige;font-size: 35px;">Hospital<span style="color: black;">Finder</span></a></li>
+              <li class="nav-item"><a href="/" class="nav-link" style="color: beige;font-size: 22px;">Home</a></li>
+              <li class="nav-item"><a href="#about" class="nav-link" style="color: beige;font-size: 22px;">About</a></li>
               </ul>
           </div>
 
@@ -100,7 +101,7 @@
 </div>
 </nav>
   
-<section class="hero-wrap hero-wrap-2" style="background-image: url('stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -111,12 +112,12 @@
       </div>
 </section>
   
-        <section class="ftco-section ftco-no-pt ftco-no-pb  ">
-          <div class="row d-flex align-items-stretch no-gutters" style="background-color:#FF8800;">
+        <section class="ftco-section ftco-no-pt ftco-no-pb">
+          <div class="row d-flex align-items-stretch no-gutters justify-content-center p-2" style="background-color:#FF8800;">
             <form class="form-inline" action="/" method="GET" id="myform">
-                <div class="col-lg-3 ">
+                <div class="col-lg-4">
                     
-                <select id="sel" class="Place form-control" name="place" onchange="checkLocation(event)">
+                <select id="sel" class="Place form-control rounded" name="place" onchange="checkLocation(event)">
                     <option selected display hidden value="<%= filter.Place %>" ><%= filter.Place %></option>
                     <option value="Near me">Near me</option>
                     <option value="Mumbai">Mumbai</option>
@@ -128,19 +129,18 @@
               </div>
 
                 <div  class="col-lg-4 order-md-last">
-                    <input class="p-1" type="text" placeholder="Enter name of hospital" aria-label="Search" value="" name="Name">
-                    <button  class="btn btn-secondary btn-lg"><i class="fa fa-search"></i></button>
+                    <input class="p-1 rounded Place form-control rounded" type="text" placeholder="Enter name of hospital" aria-label="Search" value="" name="Name">
                 </div>
                 <div id="location"> 
                       <input type="hidden" name="latitude" class="form-control-1" value="">
                       <input type="hidden" name="longitude" class="form-control-2" value="">
                 </div>
 
-                    <div class="col-lg-2 order-md-last ">
+                    <div class="col-lg-3 order-md-last "> 
                       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                        <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Filters
+                        <button id="btnGroupDrop1" type="button" class="btn form-control rounded dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Type Filters
                         </button>
                       
                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -151,8 +151,8 @@
                         </div>
                   </div>
                 </div>
-                <div class="col-md-2 order-md-last">
-            <button onclick="checkId()" type="submit" value="submit" class="btn btn-secondary btn-lg" id="advance">Search</button>
+                <div class="col-lg-1 order-md-last">
+            <button onclick="checkId()" type="submit" value="submit" class="btn form-control rounded" id="advance">Search</button>
           </div>
         </form>  
         
@@ -269,7 +269,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="staff">
                     <div class="img-wrap d-flex align-items-stretch">
-                      <div class="img align-self-stretch" style="background-image: url(stylesheets/images/Rahul.png);"></div>
+                      <div class="img align-self-stretch" style="background-image: url(/stylesheets/images/Rahul.png);"></div>
                     </div>
                     <div class="text pt-3 text-center">
                       <h3>Rahul Trivedi</h3>
@@ -289,7 +289,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="staff">
                     <div class="img-wrap d-flex align-items-stretch">
-                      <div class="img align-self-stretch" style="background-image: url(stylesheets/images/Ravi.jpg);"></div>
+                      <div class="img align-self-stretch" style="background-image: url(/stylesheets/images/Ravi.jpg);"></div>
                     </div>
                     <div class="text pt-3 text-center">
                       <h3>Ravindra Jain</h3>
@@ -309,7 +309,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="staff">
                     <div class="img-wrap d-flex align-items-stretch">
-                      <div class="img align-self-stretch" style="background-image: url(stylesheets/images/Robin.jpg);"></div>
+                      <div class="img align-self-stretch" style="background-image: url(/stylesheets/images/Robin.jpg);"></div>
                     </div>
                     <div class="text pt-3 text-center">
                       <h3>Robin Rodrigues</h3>
@@ -329,7 +329,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="staff">
                     <div class="img-wrap d-flex align-items-stretch">
-                      <div class="img align-self-stretch" style="background-image: url(stylesheets/images/Rushikesh.png);"></div>
+                      <div class="img align-self-stretch" style="background-image: url(/stylesheets/images/Rushikesh.png);"></div>
                     </div>
                     <div class="text pt-3 text-center">
                       <h3>Rushikesh Shinde</h3>
