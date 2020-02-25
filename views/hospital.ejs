@@ -35,7 +35,7 @@
     #map { position:absolute; top:0; bottom:0; width:100%; }
   </style>
   </head>
-  <body>
+  <div>
     <style>
     .dropdown-menu a:hover{background-color:  #d1e0e0;}
     </style>
@@ -100,10 +100,7 @@
 </div>
 </nav>
   
-
-
-
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('stylesheets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -112,29 +109,34 @@
           </div>
         </div>
       </div>
-    </section>
+</section>
   
         <section class="ftco-section ftco-no-pt ftco-no-pb  ">
-              
-              <div class="row d-flex align-items-stretch no-gutters" style="background-color:#FF8800">
-                <div class="col-lg-3 order-md-last ">
-                        
-                        <button class="btn btn-block btn-secondary btn-lg " onclick="getLocation()">Hospital Near me!</button>
+          <div class="row d-flex align-items-stretch no-gutters" style="background-color:#FF8800;">
+            <form class="form-inline" action="/" method="GET" id="myform">
+                <div class="col-lg-3 ">
+                    
+                <select id="sel" class="Place form-control" name="place" onchange="checkLocation(event)">
+                    <option selected display hidden value="<%= filter.Place %>" ><%= filter.Place %></option>
+                    <option value="Near me">Near me</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Patna">Patna</option>
+                    <option value="Chennai">Chennai</option>
+                  </select>
+                
+              </div>
+
+                <div  class="col-lg-4 order-md-last">
+                    <input class="p-1" type="text" placeholder="Enter name of hospital" aria-label="Search" value="" name="Name">
+                    <button  class="btn btn-secondary btn-lg"><i class="fa fa-search"></i></button>
                 </div>
-                
-                
-                
-                <div class="col-lg-3 order-md-last ">
-                <form class="form-inline" action="/" method="GET" id="myform" >
-                  <input class="p-1" type="text" placeholder="Enter name of hospital" aria-label="Search" value="" name="Name">
-                      <button onclick="getLocation()" class="btn btn-secondary btn-lg"><i class="fa fa-search"></i></button>
+                <div id="location"> 
+                      <input type="hidden" name="latitude" class="form-control-1" value="">
+                      <input type="hidden" name="longitude" class="form-control-2" value="">
                 </div>
-                      <div id="location"> 
-                      <input type="hidden" name="latitude" class="form-control-1" value="none">
-                      <input type="hidden" name="longitude" class="form-control-2" value="none">
-                      <input type="hidden" value="Search" class="btn btn-default">
-                      </div>
-                      <div class="col-lg-2 order-md-last ">
+
+                    <div class="col-lg-2 order-md-last ">
                       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                        <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -145,22 +147,16 @@
                           <label><input type="checkbox" value="Public" name="public"> Public</label><br>
                           <label><input type="checkbox" value="Private" name="private"> Private</label><br>
                           <label><input type="checkbox" value="Available" name="bloodbank"> Blood Bank</label><br>
-
-                        </ul>
+                       </ul>
                         </div>
                   </div>
                 </div>
-                <div class="col-md-2 order-md-last ">
-            <button  onclick="getLocation()" type="submit" value="submit" class="btn btn-secondary btn-lg" id="advance">Search</button>
+                <div class="col-md-2 order-md-last">
+            <button onclick="checkId()" type="submit" value="submit" class="btn btn-secondary btn-lg" id="advance">Search</button>
           </div>
         </form>  
         
-
-        <p id="demo"></p>
-        <p id="demo2"></p>
 <script>
-    var x = document.getElementById("demo");
-    var y = document.getElementById("demo2");
     function getLocation() {
     if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -168,32 +164,40 @@
     x.innerHTML = "Geolocation is not supported by this browser.";
     }
     }
+
     function showPosition(position) {
     var a=  position.coords.latitude;
     var b=  position.coords.longitude;
     document.getElementsByClassName("form-control-1")[0].setAttribute("value", a);  
-    document.getElementsByClassName("form-control-2")[0].setAttribute("value", b);         
-    document.forms["myform"].submit(); 
+    document.getElementsByClassName("form-control-2")[0].setAttribute("value", b);       
+     document.forms["myform"].submit(); 
     }
+
+    function checkId(){
+      var Id= document.getElementById('sel').value;
+      if(Id === "Near me"){
+        document.getElementsByClassName("Place")[0].setAttribute("name", "");
+        getLocation();
+      }else{
+        document.forms["myform"].submit();
+      }
+    }
+
+  function checkLocation(evt){
+    if (evt.target.value === "Near me"){
+    document.getElementsByClassName("Place")[0].setAttribute("name", "");
+    getLocation();
+   }
+   else{
+     document.forms["myform"].submit();
+   } 
+  }
+
 </script>
-  
-<!--   
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    <script type="text/javascript">
-                $(document).ready(function() {
-                $("#advance").click(function(){
-                  var favorite = [];
-                  $.each($("input[name='specialist']:checked"), function(){
-                      favorite.push($(this).val());
-                  });
-                  alert("My favourite sports are: " + favorite.join(", "));
-                });
-                });
-                </script> -->
-  
-                <div class="col-md-1 order-md-last">
+
+                <!-- <div class="col-md-1 order-md-last">
                         <button class="btn btn-block btn-secondary btn-lg " ><a style="color:white"href="/map">Map</a> </button>
-                </div>
+                </div> -->
                 
             </div>
           </section>
