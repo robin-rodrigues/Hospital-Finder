@@ -57,46 +57,6 @@
               </ul>
           </div>
 
-            <!-- <form action="/" method="GET" class="form-inline" id="myform">
-              <div id="location"> 
-                <input type="hidden" name="latitude" class="form-control-1" value="none">
-                <input type="hidden" name="longitude" class="form-control-2" value="none">
-                <input type="hidden" value="Search" class="btn btn-default">
-                <div>
-                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Specialist</button>
-                      <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <label><input type="checkbox"   value= "Public" name="public"> Public</label><br>
-                        <label><input type="checkbox"  value= "Private" name="private"> Private</label><br>
-                      </div>
-                      </ul>
-                </div>
-                        <button  onclick="getLocation()" class="btn btn-secondary btn-lg" id="advance">Search</button>
-                </div>
-              </div>
-            </form> -->
-          <!-- <p id="demo"></p>
-          <p id="demo2"></p>
-  <script>
-      var x = document.getElementById("demo");
-      var y = document.getElementById("demo2");
-      function getLocation() {
-      if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-      x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-      }
-      function showPosition(position) {
-      var a=  position.coords.latitude;
-      var b=  position.coords.longitude;
-      document.getElementsByClassName("form-control-1")[0].setAttribute("value", a);  
-      document.getElementsByClassName("form-control-2")[0].setAttribute("value", b);         
-      document.forms["myform"].submit(); 
-      }
-</script>
-  -->
   
 </div>
 </nav>
@@ -233,17 +193,18 @@
                           
                       </div>
                       <div class="col-lg-3 col-md-6 col-sm-12">
-                          <div class="card">
-                            <div class="card-body">
+                          <div style="width: 350px;" class="card">
+                            <div  class="card-body">
                                 <img src="https://img.icons8.com/plasticine/64/000000/domain.png" class="float-left">
                                 <h3 class="heading text-primary">Website: </h3>
-                                <h6 class="heading text-dark"><a href="<%= hospital.address %>"><%= hospital.website %></a></h6>
+                                <br>
+                                <h6 class="heading text-dark"><a href="<%= hospital.website %>">www.bhaktivedantahospital.com/</a></h6>
                             </div>
                           </div>
                             
                             
                         </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div style="padding-left: 80px;"class="col-lg-3 col-md-6 col-sm-12">
                         <a href="/<%= hospital._id %>" class="btn btn-secondary btn-lg m-4">Details</a>
                     </div>
                   </div>
