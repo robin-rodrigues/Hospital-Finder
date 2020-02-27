@@ -8,12 +8,12 @@ router.get("/", function(req, res){
         lat: req.query.latitude ? req.query.latitude : 0,
         long: req.query.longitude ? req.query.longitude : 0,
         name: req.query.Name ? req.query.Name : 0,
-        Place: req.query.place ? req.query.place: "Near me"
+        Place: req.query.place ? req.query.place: "Select your location"
     } 
         
         coordinates.latitude = req.query.latitude ? req.query.latitude : 0,
         coordinates.longitude = req.query.longitude ? req.query.longitude : 0
-           if(req.query.place){
+           if(req.query.place && req.query.place != "Near me"){
             Hospital.find({
                 place: req.query.place
             }, function(err, allHospitals){

@@ -136,7 +136,6 @@
     function checkId(){
       var Id= document.getElementById('sel').value;
       if(Id === "Near me"){
-        document.getElementsByClassName("Place")[0].setAttribute("name", "");
         getLocation();
       }else{
         document.forms["myform"].submit();
@@ -145,7 +144,6 @@
 
   function checkLocation(evt){
     if (evt.target.value === "Near me"){
-    document.getElementsByClassName("Place")[0].setAttribute("name", "");
     getLocation();
    }
    else{
