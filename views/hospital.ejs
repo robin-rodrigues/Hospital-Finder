@@ -103,17 +103,17 @@
                         Type Filters
                         </button>
                       
-                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                          <label><input type="checkbox" value="Public" name="public"> Public</label><br>
-                          <label><input type="checkbox" value="Private" name="private"> Private</label><br>
-                          <label><input type="checkbox" value="Available" name="bloodbank"> Blood Bank</label><br>
+                        <ul class="dropdown-menu m-0 p-0" aria-labelledby="btnGroupDrop1">
+                          <label class="m-0 p-1 pl-2 justify-content-start alert alert-warning border border-secondary"><input type="checkbox" value="Public" name="public"> Public</label>
+                          <label class="m-0 p-1 pl-2 justify-content-start alert alert-info border border-secondary"><input type="checkbox" value="Private" name="private"> Private</label>
+                          <label class="m-0 p-1 pl-2 justify-content-start alert alert-warning border border-secondary"><input type="checkbox" value="Available" name="bloodbank"> Blood Bank</label>
                        </ul>
                         </div>
                   </div>
                 </div>
                 <div class=" order-md-last">
             <button onclick="checkId()" type="submit" value="submit" class="btn btn-large 
-            progress-bar bg-warning progress-bar-striped progress-bar-animated rounded" style="width: 200px;" id="advance">Search</button>
+            progress-bar bg-warning progress-bar-striped progress-bar-animated d-flex rounded" style="width: 200px;" id="advance">Search</button>
           </div>
         </form>  
         
@@ -166,11 +166,11 @@
             <div class="container jumbotron border border-primary">
               <div class="row no-gutters">
               <% hospitals.forEach(function(hospital){ %>
-                <div class="inline-block d-flex services p-2 rounded col-lg-6 col-md-12 border border-secondary">
+                <div class=" inline-block d-flex services p-2 rounded col-lg-5 col-md-12 border border-secondary mr-4 ml-4 mb-2">
                   
                       <div class="media-body">
                         
-                        <div class="row pl-3">
+                        <div class="row">
                           <div class="col-lg-7 col-md-6 col-sm-12" >
                             <div class="card pt-1">
                               <div class="card-body p-1">
