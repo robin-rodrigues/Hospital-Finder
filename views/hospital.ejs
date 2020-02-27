@@ -73,11 +73,11 @@
 </section>
   
         <section class="ftco-section ftco-no-pt ftco-no-pb">
-          <div class="row d-flex align-items-stretch no-gutters justify-content-center p-2" style="background-color:#FF8800;">
+          <div class="row d-flex align-items-stretch no-gutters p-2" style="background-color:#FF8800;">
             <form class="form-inline" action="/" method="GET" id="myform">
-                <div class="col-lg-4">
+                <div class="float-left" >
                     
-                <select id="sel" class="Place form-control rounded" name="place" onchange="checkLocation(event)">
+                <select id="sel" class="Place bg-light p-2 rounded mr-5 ml-5" name="place" onchange="checkLocation(event)" style="width: 330px;">
                     <option selected display hidden value="<%= filter.Place %>" ><%= filter.Place %></option>
                     <option value="Near me">Near me</option>
                     <option value="Mumbai">Mumbai</option>
@@ -88,7 +88,7 @@
                 
               </div>
 
-                <div  class="col-lg-4 order-md-last">
+                <div  class=" order-md-last mr-4 ">
                     <input class="p-1 rounded Place form-control rounded" type="text" placeholder="Enter name of hospital" aria-label="Search" value="" name="Name">
                 </div>
                 <div id="location"> 
@@ -96,10 +96,10 @@
                       <input type="hidden" name="longitude" class="form-control-2" value="">
                 </div>
 
-                    <div class="col-lg-3 order-md-last "> 
+                    <div class="order-md-last bg-light mr-4"> 
                       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                        <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn form-control rounded dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button id="btnGroupDrop1"  style="width: 270px;" type="button" class="btn bg-light p-1 rounded dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Type Filters
                         </button>
                       
@@ -111,8 +111,9 @@
                         </div>
                   </div>
                 </div>
-                <div class="col-lg-1 order-md-last">
-            <button onclick="checkId()" type="submit" value="submit" class="btn form-control rounded" id="advance">Search</button>
+                <div class=" order-md-last">
+            <button onclick="checkId()" type="submit" value="submit" class="btn btn-large 
+            progress-bar bg-warning progress-bar-striped progress-bar-animated rounded" style="width: 200px;" id="advance">Search</button>
           </div>
         </form>  
         
@@ -159,61 +160,85 @@
                 
             </div>
           </section>
-    <section class="ftco-services ftco-no-pb">
-      <div class="container jumbotron border border-primary">
-        <div class="row no-gutters">
-        <% hospitals.forEach(function(hospital){ %>
-          <div class="inline-block d-flex services p-3 mb-2 rounded">
-            
-                <div class="media-body p-1 mt-1">
+          <section class="ftco-services ftco-no-pb">
+            <div class="container jumbotron border border-primary">
+              <div class="row no-gutters">
+              <% hospitals.forEach(function(hospital){ %>
+                <div class="inline-block d-flex services p-2 rounded col-lg-6 col-md-12 border border-secondary">
                   
-                  <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                      <div class="card">
-                        <div class="card-body">
-                            <img src="https://img.icons8.com/wired/64/000000/employee-card.png" class="float-left mr-1" > 
-                            <h3 class="heading text-primary ">Name: </h3>
-                            <h6 class="heading text-dark"><%= hospital.name %></h6>
-                        </div>
-                      </div>
+                      <div class="media-body">
                         
-                        
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card">
-                          <div class="card-body">
-                              <img src="https://img.icons8.com/color/48/000000/phone.png" class="float-left" >
-                              <h3 class="heading text-primary">Address</h3>
-                              <h6 class="heading text-dark"><%= hospital.address %></h6>
+                        <div class="row pl-3">
+                          <div class="col-lg-7 col-md-6 col-sm-12" >
+                            <div class="card pt-1">
+                              <div class="card-body p-1">
+                                  <img src="https://img.icons8.com/wired/36/000000/employee-card.png" class="float-left mr-1"> 
+                                  <h6 class="heading text-dark alert alert-primary d-flex justify-content-center m-0 p-1"><%= hospital.name %></h6>
+                                  <img src="https://img.icons8.com/nolan/36/address.png" class="float-left mr-1">  
+                                  <p class="heading text-dark alert alert-secondary d-flex justify-content-center m-0 p-1"><%= hospital.address %></p>
+                                  <img src="https://img.icons8.com/plasticine/48/000000/domain.png" class="float-left mr-1">
+                                  <p class="heading text-dark m-0 p-1">
+                                    <a href="<%= hospital.address %>"><p><%= hospital.website %></p></a>
+                                  </p>
+
+                              </div>    
+                            </div> 
                           </div>
+                          <div class="col-lg-5 col-md-6 col-sm-12" >
+                            <div class="card pt-1">
+                              <div class="card-body p-1">
+                                <img src="https://img.icons8.com/ultraviolet/36/000000/category.png" class="float-left mr-1">
+                                <p class="heading text-dark alert alert-warning d-flex m-0 p-1"><%= hospital.category %></p>
+                                <img src="https://img.icons8.com/pastel-glyph/36/000000/place-marker.png" class="float-left mr-1">
+                                <p class="heading text-dark alert alert-danger d-flex m-0 p-1"><%= hospital.place %></p>
+                                <img src="https://img.icons8.com/cotton/48/000000/--bloodbag.png" class="float-left mr-1">
+                                <p class="heading text-dark alert alert-warning d-flex m-0 p-1 mb-1"><%= hospital.bloodbank %></p>
+
+                                <a href="/<%= hospital._id %>" class="btn btn-block btn-sm justify-content-center btn-secondary">Details</a>
+
+                              </div>    
+                            </div> 
+                          </div>
+                          <!-- <div class="col-lg-3 col-md-6 col-sm-12" >
+                            <div class="card pt-1">
+
+
+                              <div class="card-body p-1">
+                                  <img src="https://img.icons8.com/wired/36/000000/employee-card.png" class="float-left mr-1" > 
+                                  <h3 class="heading text-primary ">Name: </h3>
+                                  <p class="heading text-dark"><%= hospital.name %></p>
+                              </div>
+                            </div>    
+                          </div>
+                          <div class="col-lg-4 col-md-6 col-sm-12">
+                              <div class="card pt-1">
+                                <div class="card-body p-1">
+                                    <img src="https://img.icons8.com/color/36/000000/phone.png" class="float-left mr-2" >
+                                    <h3 class="heading text-primary">Address:</h3>
+                                    <p class="heading text-dark"><%= hospital.address %></p>
+                                </div>
+                              </div></div>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <div class="card pt-1">
+                                  <div class="card-body p-1">
+                                      <img src="https://img.icons8.com/plasticine/36/000000/domain.png" class="float-left mr-1">
+                                      <h3 class="heading text-primary">Website: </h3>
+                                      <p class="heading text-dark"><a href="<%= hospital.address %>"><%= hospital.website %></a></p>
+                                  </div>
+                                </div>
+                               </div>
+                          <div class="col-lg-1 col-md-6 col-sm-12 mt-4 ">
+                              <a href="/<%= hospital._id %>" class="btn btn-secondary">Details</a>
+                          </div> -->
                         </div>
-                          
-                          
+                         
                       </div>
-                      <div class="col-lg-3 col-md-6 col-sm-12">
-                          <div style="width: 350px;" class="card">
-                            <div  class="card-body">
-                                <img src="https://img.icons8.com/plasticine/64/000000/domain.png" class="float-left">
-                                <h3 class="heading text-primary">Website: </h3>
-                                <br>
-                                <h6 class="heading text-dark"><a href="<%= hospital.website %>">www.bhaktivedantahospital.com/</a></h6>
-                            </div>
-                          </div>
-                            
-                            
-                        </div>
-                    <div style="padding-left: 80px;"class="col-lg-3 col-md-6 col-sm-12">
-                        <a href="/<%= hospital._id %>" class="btn btn-secondary btn-lg m-4">Details</a>
                     </div>
-                  </div>
-                   
-                </div>
+            <% }) %>
               </div>
-      <% }) %>
-        </div>
-      </div>
-      
-    </section>
+            </div>
+            
+          </section>
 
     <section id="about" class="ftco-section ftco-no-pt">
             <div class="container">
