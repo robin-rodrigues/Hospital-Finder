@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hackathon</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="/stylesheets/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/css/animate.css">
+
+    <link rel="stylesheet" href="/stylesheets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/stylesheets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/stylesheets/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/stylesheets/css/aos.css">
+
+    <link rel="stylesheet" href="/stylesheets/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/stylesheets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/stylesheets/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="/stylesheets/css/flaticon.css">
+    <link rel="stylesheet" href="/stylesheets/css/icomoon.css">
+    <link rel="stylesheet" href="/stylesheets/css/style.css">
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.css' rel='stylesheet' />
+    <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; padding: 0px; top:0; bottom:0; width:100%; height: 400px; }
+  </style>
+  </head>
+  <body>
+    <style>
+    .dropdown-menu a:hover{background-color:  #d1e0e0;}
+    </style>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css' type='text/css' />
+
+    <nav class="navbar navbar-expand-lg" id="ftco-navbar"
+    style="background-image: url(/stylesheets/images/download.jpg);">
+        <div class="container d-flex align-items-center">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item  row no-gutters d-flex align-items-start align-items-center px-3 px-md-0"><a class="navbar-brand" href="/" style="color: beige;font-size: 35px;">Hospital<span style="color: black;">Finder</span></a></li>
+              <li class="nav-item"><a href="/" class="nav-link" style="color: beige;font-size: 22px;">Home</a></li>
+              <li class="nav-item"><a href="#about" class="nav-link" style="color: beige;font-size: 22px;">About</a></li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+    <div class="jumbotron m-0">
+    <div id="row">
+    <div class="col-lg-6 col-md-6 "><div id='map'></div></div>
+    
+        <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoicm9kcm9iIiwiYSI6ImNrMTBnZ2NyaTA1bGUzYnZ6c2V2ZmR5OXQifQ.K3DQfl7-XhSHY-Izq6z9VA';
+        var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+        center: ["<%=hospital.location.coordinates[0]%>","<%=hospital.location.coordinates[1]%>"], // starting position [lng, lat]
+        zoom: 10 // starting zoom
+        });
+        var marker = new mapboxgl.Marker({
+            draggable: true
+            })
+            .setLngLat(["<%=hospital.location.coordinates[0]%>", "<%=hospital.location.coordinates[1]%>"])
+            .addTo(map);
+            
+            function onDragEnd() {
+            var lngLat = marker.getLngLat();
+            coordinates.style.display = 'block';
+            coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+        }
+        marker.on('dragend', onDragEnd);</script>
+    </div>
+    <div class="col-lg-6 col-md-6 p-4 p-md-5 order-md-last float-right mr-4 container-fluid" style="height:400px">
+        <h1 class="text-primary"><%=hospital.address%></h1>
+        <p>Hospital_category:<span class="text-primary"><%=hospital.category%></span></p>
+        <p>Pincode: <span class="text-primary"><%=hospital.pincode%></span></p>
+    </div>
+        <div class="col-md-6 d-flex align-items-stretch">
+        <div id="map"></div>
+        </div> 
+
+    <div class="container row m-2"> 
+
+        <div class="row pt-2">
+            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5">
+              <div class="services-2 d-flex">
+              <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-first-aid-kit"></span></div>
+              <div class="text">
+                <p>Address: <span class="text-primary"><%=hospital.address%></span></p>
+                <p>State: <span class="text-primary"><%=hospital.state%></span></p>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5">
+              <div class="services-2 d-flex">
+              <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-dropper"></span></div>
+              <div class="text">
+          
+                <p>specialties: <p class="text-primary"><%=hospital.specialties%></p></p>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5">
+              <div class="services-2 d-flex">
+              <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-experiment-results"></span></div>
+              <div class="text">
+                <p>Phone: <p class="text-primary"><%=hospital.telephone%></p></p>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5">
+              <div class="services-2 d-flex">
+              <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-heart-rate"></span></div>
+              <div class="text">
+                <p>Website:<a style="width:50px;"                           
+                href="<%=hospital.website%>">
+                <pre><%=hospital.website%></pre></a></p>
+              </div>
+              </div>
+            </div>
+            </div>
+    </div>
+  </div>
+        
+  
+  <footer class="ftco-footer ftco-bg-dark ftco-section fixed-bottom" >
+    <div class="container">
+      <div class="row mb-1">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+          <div class="ftco-footer-widget mb-1">
+            <h2 class="ftco-heading-2 logo">Hospital<span>finder</span></h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts
+          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
+          </div>
+
+        </div>
+        <div class="col-lg-6 col-md-8 col-sm-12">
+          <div class="ftco-footer-widget mb-1">
+            <h2 class="ftco-heading-2">Have a Questions?</h2>
+            <div class="block-23 mb-1">
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+              </ul>
+            </div>
+
+            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-1">
+              <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        </div>
+      </div>
+      <div class="row mb-0">
+        <div class="col-md-12 text-center">
+
+          <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+        <!-- <% var latitude = 19 %>
+        <% var longitude = 78%> -->
+        
+        
+    <script src="/stylesheets/js/jquery.min.js"></script>
+    <script src="/stylesheets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/stylesheets/js/popper.min.js"></script>
+    <script src="/stylesheets/js/bootstrap.min.js"></script>
+    <script src="/stylesheets/js/jquery.easing.1.3.js"></script>
+    <script src="/stylesheets/js/jquery.waypoints.min.js"></script>
+    <script src="/stylesheets/js/jquery.stellar.min.js"></script>
+    <script src="/stylesheets/js/owl.carousel.min.js"></script>
+    <script src="/stylesheets/js/jquery.magnific-popup.min.js"></script>
+    <script src="/stylesheets/js/aos.js"></script>
+    <script src="/stylesheets/js/jquery.animateNumber.min.js"></script>
+    <script src="/stylesheets/js/bootstrap-datepicker.js"></script>
+    <script src="/stylesheets/js/jquery.timepicker.min.js"></script>
+    <script src="/stylesheets/js/scrollax.min.js"></script>
+    <script src="/stylesheets/js/google-map.js"></script>
+    <script src="/stylesheets/js/main.js"></script>
+    </html>
