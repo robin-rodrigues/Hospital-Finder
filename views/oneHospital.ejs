@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/stylesheets/css/flaticon.css">
     <link rel="stylesheet" href="/stylesheets/css/icomoon.css">
     <link rel="stylesheet" href="/stylesheets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
+
 
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.css' rel='stylesheet' />
@@ -56,9 +58,9 @@
           </div>
       </div>
     </nav>
-    <div class="jumbotron m-0">
+    <div class="jumbotron m-0 pt-1 pb-1">
     <div id="row">
-    <div class="col-lg-6 col-md-6 "><div id='map'></div></div>
+    <div class="col-lg-9 col-md-6 d-flex flex-left"><div class="border border-secondary" id='map'></div></div>
     
         <script>
         mapboxgl.accessToken = 'pk.eyJ1Ijoicm9kcm9iIiwiYSI6ImNrMTBnZ2NyaTA1bGUzYnZ6c2V2ZmR5OXQifQ.K3DQfl7-XhSHY-Izq6z9VA';
@@ -81,10 +83,10 @@
         }
         marker.on('dragend', onDragEnd);</script>
     </div>
-    <div class="col-lg-6 col-md-6 p-4 p-md-5 order-md-last float-right mr-4 container-fluid" style="height:400px">
-        <h1 class="text-primary"><%=hospital.address%></h1>
-        <p>Hospital_category:<span class="text-primary"><%=hospital.category%></span></p>
-        <p>Pincode: <span class="text-primary"><%=hospital.pincode%></span></p>
+    <div class="col-lg-3 col-md-6 p-4 p-md-5 order-md-last float-right mr-4 ml-5" style="height:400px">
+        <h1 class="text-primary animated bounce"><%=hospital.address%></h1>
+        <p>Hospital_category:<h6 class="text-primary alert alert-danger"><%=hospital.category%></h6></p>
+        <p>Pincode: <h6 class="text-primary alert alert alert-danger"><%=hospital.pincode%></h6></p>
     </div>
         <div class="col-md-6 d-flex align-items-stretch">
         <div id="map"></div>
@@ -93,7 +95,7 @@
     <div class="container row m-2"> 
 
         <div class="row pt-2">
-            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5">
+            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5 card">
               <div class="services-2 d-flex">
               <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-first-aid-kit"></span></div>
               <div class="text">
@@ -102,7 +104,7 @@
               </div>
               </div>
             </div>
-            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5">
+            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5 card">
               <div class="services-2 d-flex">
               <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-dropper"></span></div>
               <div class="text">
@@ -111,7 +113,7 @@
               </div>
               </div>
             </div>
-            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5">
+            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5 card">
               <div class="services-2 d-flex">
               <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-experiment-results"></span></div>
               <div class="text">
@@ -119,13 +121,13 @@
               </div>
               </div>
             </div>
-            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-5">
+            <div class="col-lg-6 border border-secondary rounded mb-2 pt-4 pl-4 card">
               <div class="services-2 d-flex">
               <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-heart-rate"></span></div>
               <div class="text">
                 <p>Website:<a style="width:50px;"                           
                 href="<%=hospital.website%>">
-                <pre><%=hospital.website%></pre></a></p>
+                <pre class="alert alert-secondary m-1 p-1"><%=hospital.website%></pre></a></p>
               </div>
               </div>
             </div>
