@@ -4,6 +4,8 @@ var express     = require('express'),
     app         = express(),
     bodyParser  = require('body-parser'),
     mongoose    = require('mongoose')
+  
+let PORT = process.env.PORT || 3000;      
 let Hospital = require('./models/hospital');
 var HospitalRoutes      = require("./routes/hospital");    
 let data;
@@ -15,7 +17,7 @@ app.use(HospitalRoutes);
 mongoose
 .connect(process.env.CLOUD_MONGODB_PATH ,{useNewUrlParser: true, useUnifiedTopology: true})
 .then(result => {
-  app.listen(3000,function(){
+  app.listen(PORT,function(){
     console.log(" Server has started");
   })
 })
